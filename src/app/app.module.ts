@@ -10,6 +10,7 @@ import { DashboardPageComponent } from './dashboard/dashboard-page/dashboard-pag
 import { NavPageComponent } from './dashboard/nav-page/nav-page.component';
 import { WeclomePageComponent } from './dashboard/weclome-page/weclome-page.component';
 import { FaqPageComponent } from './dashboard/faq-page/faq-page.component';
+import { ContactPageComponent } from './dashboard/contact-page/contact-page.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FaqPageComponent } from './dashboard/faq-page/faq-page.component';
     DashboardPageComponent,
     NavPageComponent,
     WeclomePageComponent,
-    FaqPageComponent
+    FaqPageComponent,
+    ContactPageComponent
   ],
   imports: [
     BrowserModule,
