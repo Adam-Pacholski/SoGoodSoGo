@@ -1,4 +1,3 @@
-
 <h1>FORMULARZ KONTAKTOWY</h1>
 
 <h2>Coś nie działa?</h2>
@@ -6,24 +5,35 @@
 <h2>Może chcesz dołaczyć do naszego zespołu i pomóc nam ulepszać tą aplikację każdego dnia?</h2>    
 <h2>Napisz do nas! Odpowiemy na każde Twoje pytanie!</h2>
 
-<div id="wrap">
+<div id = "wrap">
+
     <form>
-        <div class="field-form">
-            <label class="form-label">E-mail</label>
-            <input type="text" class="form-control" id="input1" >
+
+        <div class = "field-of-form">
+            <label class = "header-of-input">E-mail</label>
+            <input type = "text" class = "input-form" name = "email" >
         </div>
-        <div class="field-form">
-            <label class="form-label">Imię</label>
-            <input type="text" class="form-control" id="input2">
+
+        <div class = "field-of-form">
+            <label class = "header-of-input">Imie</label>
+            <input type = "text" class = "input-form" name = "name" >
         </div>
-        <div class="field-form">
-            <label class="form-label">Nazwisko</label>
-            <input type="text" class="form-control" id="input3">
+
+        <div class = "field-of-form">
+            <label class = "header-of-input">Nazwisko</label>
+            <input type = "text" class = "input-form" name = "surname">
         </div>
-        <div class="field-form">
-            <label class="form-label">Wiadomość</label>
-            <input type="text" class="form-control" id="inputMessage">
-        <button type="submit" class="btn">ZATWIERDŹ</button>
+
+        <div class = "field-of-form">
+            <label class = "header-of-input">Wiadomość</label>
+            <input id = "inputMessage" type = "text" class = "input-form" name = "message">
         </div>
+
+        <form action = "*">
+            <button type = "submit" class = "btn"> ZATWIERDŹ </button>
+            <button type = "reset" class = "btn"> WYCZYŚĆ </button>
+        </form>
+        
     </form>  
+
 </div>
