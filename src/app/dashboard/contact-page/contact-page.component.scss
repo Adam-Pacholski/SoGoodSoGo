@@ -31,7 +31,7 @@ h2
     margin-left: auto;
     margin-right: auto;
     margin-top: 40px;
-    margin-bottom: 100px;
+    margin-bottom: 15px;
     border-radius: 10px;
   
     -webkit-box-shadow: 3px 3px 11px 0px #000000;
@@ -100,4 +100,48 @@ h2
 {
     color: #FFDB15;
     box-shadow: none;
+}
+
+#icon-wrap
+{
+    padding-top: 10px;
+    width: 810px;
+    height: 100px;
+    display: flex;
+    justify-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.icon
+{        
+    margin-left: 90px;
+    margin-right: 90px;
+    padding-top: 10px;
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 70px; 
+    border-radius: 10px;
+    color: #000000;
+}
+
+.icon:hover
+{
+    cursor: pointer;
+    font-size: 60px; 
+    background-color: #000000;
+    color: #FFDB15;
+}
+
+footer
+{   
+    letter-spacing: 2px;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
 }
