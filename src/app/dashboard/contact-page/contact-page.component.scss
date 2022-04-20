@@ -1,8 +1,50 @@
+
+#main-container
+{
+    width: 100%;
+    min-height: 100%;
+    display: flex;
+}
+
+#left
+{
+    width: 45%;
+    background-color: #F5F5EF;
+    border-right-style: solid;
+    border-color: #000000;
+    border-right-width: 1px;   
+}
+
+img
+{
+    margin: auto;
+    max-width: 200%;
+    max-height: 200%;
+    display: block; 
+    padding: 15px;
+}
+
+footer
+{   
+    letter-spacing: 2px;
+    padding: 15px;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 40px;
+}
+
+#right
+{
+    width: 60%;
+  //  background-color: #FFDB15;
+    margin-top: 100px;
+}
+
 h1
 {   
     text-align: center;
-    padding-top: 50px;
-    padding-bottom: 10px;
+    padding-top: 100px;
+    padding-bottom: 50px;
     font-size: 40px;
     font-weight: bold;
     letter-spacing: 4px;
@@ -14,34 +56,31 @@ h2
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 3px;
-    padding-bottom: 0px;
+    padding-top: 6px;
+    padding-bottom: 5px;
+    margin: 10px;
 }
 
 #wrap
 {
-    padding-top: 15px;
-    padding-bottom: 10px;
-    width: 800px;
-    height: 650px;
+    padding-top: 10px;
+    width: 860px;
+    height: 700px;
     background-color: #F5F5EF;
   
     display: flex;
-    justify-items: center;
-    text-align: left;
+
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
-    margin-bottom: 15px;
+    margin-top: 50px;
     border-radius: 10px;
   
-    -webkit-box-shadow: 3px 3px 11px 0px #000000;
-    -moz-box-shadow: 3px 3px 11px 0px #000000;
     box-shadow: 3px 3px 11px 0px #000000;
 }
 
 .field-of-form
 {
-    margin-left: 100px;
+    margin-left: 80px;
 }
 
 #inputMessage
@@ -51,16 +90,17 @@ h2
 
 .header-of-input
 {   
-    padding: 5px 25px 5px 25px;
+    padding: 10px 25px 10px 50px;
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 3px;
+    margin-right: 50px;
 }
 
 .input-form
 {   
     background-color: #FFDB15;
-    width: 600px;
+    width: 700px;
     padding-left: 10px;
     padding-right: 10px;
     border-color:#000000;
@@ -82,11 +122,11 @@ h2
     margin-left:166px;
     background-color: #000000;
     color: #FFFFFF;
-    width: 150px;
+    width: 200px;
     height: 50px;
     font-size: 20px;
     font-weight: bold;
-    margin-top: 25px;
+    margin-top: 50px;
     margin-bottom: 25px;
 }
 
@@ -105,13 +145,13 @@ h2
 #icon-wrap
 {
     padding-top: 10px;
-    width: 810px;
+    width: 860px;
     height: 100px;
     display: flex;
     justify-items: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 50px;
     margin-bottom: 20px;
     border-radius: 10px;
 }
@@ -138,10 +178,3 @@ h2
     color: #FFDB15;
 }
 
-footer
-{   
-    letter-spacing: 2px;
-    padding: 20px;
-    font-size: 20px;
-    text-align: center;
-}
