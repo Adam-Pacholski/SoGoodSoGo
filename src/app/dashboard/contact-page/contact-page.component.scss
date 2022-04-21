@@ -109,12 +109,14 @@ h2
 .input-form:hover
 {
     border-width: 2.5px;
+    box-shadow: 1px 1px 6px 0px #000000;
 }
 
 .input-form:focus
 {
-    box-shadow: 1px 1px 6px 0px #000000;
+    box-shadow: 1px 1px 6px 0px #000000; 
     border-width: 2.5px;
+    outline: none;
 }
 
 .btn
