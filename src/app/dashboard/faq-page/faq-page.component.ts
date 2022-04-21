@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { faqList } from 'src/app/interface/faqListInterface';
+import { FaqList } from 'src/app/interface/faqListInterface';
+import { FaqServiceService } from 'src/app/services/faq-service.service';
 
 @Component({
   selector: 'app-faq-page',
@@ -8,36 +9,44 @@ import { faqList } from 'src/app/interface/faqListInterface';
 })
 export class FaqPageComponent implements OnInit {
 
-  faqList : faqList[] = [];
+  faqList : FaqList[] = [];
   show: number = -1;
-  constructor() { }
+  dlugosc: number = 0;
+  faqElement: FaqList = {docID:'', id:0 , question:'', answer:'' };
+
+  constructor(private faqS: FaqServiceService) { }
 
   ngOnInit(): void {
+    this.getList();  
+  }
 
-    this.faqList = [
-      {id: 1,question: 'Ile to kosztuje?', answer: 'Prowadzenie konta jest całkowicie za darmo.'},
-      {id: 2,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 3,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 4,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 5,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 6,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 7,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 8,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 9,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 9,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'},
-      {id: 9,question: 'Czy potrzebujemy specjalny sprzęt?', answer: 'Do obsługi wystarczy urządzenie z dostępem do internetu i przeglądarką internetową'}
-    ];
+  getList(){
+    this.faqS.getFaq().subscribe(items => {
+      this.faqList = items;
+      this.dlugosc = this.faqList.length;
+      //console.log(this.faqList);
+    });
+  }
+
+  addQuestion(){
+    this.faqElement.id = this.dlugosc+1;
+    this.faqS.addFaq(this.faqElement);
+  } 
+
+  editQuestion(){
+   // console.log(this.faqElement);
+    this.faqS.editFaq(this.faqElement);
+    this.faqElement = {docID:'', id:0 , question:'', answer:'' };
+
   }
 
   collapse(i: number){
-
+    this.faqElement = this.faqList[i];
     if(this.show === i){
        this.show = -1;
+       this.faqElement = {docID:'', id:0 , question:'', answer:'' };
     } else {
       this.show = i;
     }
-   
-    //console.log("- Show: "+ this.show + " - i: " + i);
   }
-
 }

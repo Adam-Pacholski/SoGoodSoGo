@@ -1,9 +1,25 @@
+<div style="height: 60px;"></div>
+
+<form (ngSubmit)="addQuestion()" style="width: 500px; margin-left: auto; margin-right: auto; margin-top: 100px;">
+  <div style="margin-bottom: 20px; font-size: 20px; font-weight: bold;">Formularz tym czasowy aby można było szybko dodawć FAQ do bazy ;]</div>
+  <div class="form-floating">
+    <textarea class="form-control" [(ngModel)]="faqElement.question" name="question" placeholder="Leave a comment here" id="question"></textarea>
+    <label for="floatingTextarea">Pytanie</label>
+  </div>
+  <div class="form-floating mt-3">
+    <textarea class="form-control" [(ngModel)]="faqElement.answer" name="answer" placeholder="Leave a comment here" id="answer"></textarea>
+    <label for="floatingTextarea">Odpowiedź</label>
+  </div>
+  <button type="submit" class="btn btn-success me-3 mt-3" >Dodaj</button>
+  <button type="button" (click)="editQuestion()" class="btn btn-primary mt-3">Zmień</button>
+</form>
+
 <div class="container">
-    <h1>
-        "FAQ"
-      </h1>
-  <div *ngFor="let list of faqList; let i = index" class="listBox">
-    <div class="heder" (click)="collapse(i)">{{list.id}}. {{list.question}}</div>
+  <h1>
+    "FAQ"
+  </h1>
+  <div  *ngFor="let list of faqList; let i = index" class="listBox">
+    <div class="heder" (click)="collapse(i)">{{ list.id }}. {{ list.question }}</div>
     <div *ngIf="i===show" class="collapseBox">{{list.answer}}</div>
   </div>
 </div>

@@ -10,7 +10,15 @@ import { DashboardPageComponent } from './dashboard/dashboard-page/dashboard-pag
 import { NavPageComponent } from './dashboard/nav-page/nav-page.component';
 import { WeclomePageComponent } from './dashboard/weclome-page/weclome-page.component';
 import { FaqPageComponent } from './dashboard/faq-page/faq-page.component';
+<<<<<<< HEAD
 import { ContactPageComponent } from './dashboard/contact-page/contact-page.component';
+=======
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+
+
+>>>>>>> 61cdf4b6d6ed74c1051bd46c846281e15701fbb1
 
 @NgModule({
   declarations: [
@@ -27,9 +35,16 @@ import { ContactPageComponent } from './dashboard/contact-page/contact-page.comp
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+function getFirestore() {
+  throw new Error('Function not implemented.');
+}
+

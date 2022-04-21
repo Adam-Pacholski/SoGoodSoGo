@@ -14,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   onSubmit(){
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['']);
   }
 
 }
