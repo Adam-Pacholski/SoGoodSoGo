@@ -1,66 +1,35 @@
-<div id="separate">
-
-</div>
 <div class="myContainer">
   <div class="row">
     <div class="white">
-      <div id="sekcja_1">
-        Odkryj z nami świat
+
+
+      <div id="wrap">
+        <form (ngSubmit)="onSubmit()">
+          <h1>
+            Rejestracja
+          </h1>
+          <div class="field-of-form">
+            <label class="header-of-input">E-mail</label>
+            <input type="text" class="input-form" name="email">
+          </div>
+
+          <div class="field-of-form">
+            <label class="header-of-input">Hasło</label>
+            <input [type]="isChecked?'text':'password'" class="input-form" name="password">
+          </div>
+
+          <div class="field-of-form mt-2">    
+            <label class="header-of-input-2 "> <input type="checkbox" [(ngModel)]="isChecked" class="input-checbox" name="name">Pokaż hasło</label>
+          </div>
+
+          <button type="submit" class="btn"> ZALOGUJ </button>
+        </form>
       </div>
-      <h1>Twoje podróże to nasza pasja!</h1>
+
+
     </div>
-    <div class="yellow"><img [src]="'assets/images/30.png'" alt=""></div>
+    <div class="yellow">
+      <div class="imgDiv"><img [src]="'assets/images/p30.png'" alt=""></div>
+    </div>
   </div>
 </div>
-
-<!-- <div class="container">
-    <h1>
-      SoGoodSoGoo
-    </h1>
-    <div class="wrapper">
-  
-      <div id="ico"><i class="fa-solid fa-route fa-4x"></i></div>
-      <div id="line">
-        <div class="one"></div>
-        <div class="two">
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-          <div class="white"></div>
-          <div class="black"></div>
-        </div>
-        <div class="one"></div>
-      </div>
-      <div id="form">
-        <h2 id="title">
-          Rejestracja
-        </h2>
-  
-        <form (ngSubmit)="onSubmit()">
-          <div class="mb-3">
-            <label class="form-label">Nazwa uzytkownika:</label>
-            <input type="text" class="form-control" id="login" name="login">
-  
-          </div>
-  
-          <div class="mb-3">
-            <label class="form-label">Haslo:</label>
-            <input type="password" class="form-control" id="password" name="password">
-          </div>
-  
-          <button type="submit" class="btn btn-success">Zarejestruj</button>
-          <a href=""></a>
-        </form>
-        <div id="niewiem"> 
-
-          <div class="link" routerLink="">Utwóż nowe konto</div>
-        </div>
-  
-      </div>
-    </div>
-  </div> -->
-  

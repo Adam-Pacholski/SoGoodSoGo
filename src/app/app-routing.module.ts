@@ -11,12 +11,13 @@ const routes: Routes = [
   {
     path: '', component: DashboardPageComponent, children: [
       { path: '', component: WeclomePageComponent },
-      { path: 'login', component: LoginPageComponent },
-      { path: 'register', component: RegisterPageComponent },
       { path: 'faq', component: FaqPageComponent},
       { path: 'conact', component: ContactPageComponent}
     ]
-  }
+  },
+   { path: 'login', component: LoginPageComponent },
+   { path: 'register', component: RegisterPageComponent }
+
   
 ];
 

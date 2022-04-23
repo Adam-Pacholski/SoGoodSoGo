@@ -9,12 +9,13 @@ import { Router } from '@angular/router';
 export class LoginPageComponent implements OnInit {
 
   constructor(private router: Router) { }
-  
+  isChecked:boolean = false;
+
   ngOnInit(): void {
   }
 
   onSubmit(){
     this.router.navigate(['']);
+    localStorage.setItem('user','adam');
   }
-
 }

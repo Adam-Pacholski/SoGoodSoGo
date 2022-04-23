@@ -56,7 +56,7 @@
     }
 
     & #wrap {
-      
+
       max-width: 500px;
       height: 450px;
       background-color: #FFDB15;
@@ -76,43 +76,67 @@
         & .field-of-form {
           margin-left: auto;
           margin-right: auto;
-        }
+          max-width: 400px;
 
-        & .header-of-input {
-          padding: 10px 25px 10px 80px;
-          font-size: 18px;
-          font-weight: bold;
-          letter-spacing: 3px;
-          margin-right: 50px;
-        }
-
-       
-
-        & .input-form {
-          background-color: #F5F5EF;
-        
-          width: 400px;
-          margin: auto;
-          display: block;
-          padding-left: 10px;
-          padding-right: 10px;
-          border-color: #000000;
-          
-
-         &:hover {
-            border-width: 2.5px;
-            box-shadow: 1px 1px 6px 0px #000000;
+          & .header-of-input {
+            padding: 10px 25px 10px 50px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-right: 50px;
           }
 
-         &:focus {
-            box-shadow: 1px 1px 6px 0px #000000;
-            border-width: 2.5px;
-            outline: none;
+          & .header-of-input-2 {
+            // height: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            display: block;
+            //padding-left: 15px;
+            // text-indent: -15px; 
+
+            & .input-checbox {
+              // width: 20px;
+              // height: 20px;
+              width: 20px;
+              height: 20px;
+              padding: 0;
+              margin-right: 30px;
+              vertical-align: middle;
+              //  position: relative;
+              // top: -1px;
+              //  *overflow: hidden;
+            }
+          }
+
+
+
+          & .input-form {
+            background-color: #F5F5EF;
+
+            width: 100%;
+            margin: auto;
+            display: block;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-color: #000000;
+
+
+            &:hover {
+              border-width: 2.5px;
+              box-shadow: 1px 1px 6px 0px #000000;
+            }
+
+            &:focus {
+              box-shadow: 1px 1px 6px 0px #000000;
+              border-width: 2.5px;
+              outline: none;
+            }
           }
         }
 
         & .btn {
-         // margin-left: 166px;
+          // margin-left: 166px;
           background-color: #000000;
           color: #FFFFFF;
           margin: auto;
@@ -124,11 +148,11 @@
           letter-spacing: 3px;
           margin-top: 50px;
           margin-bottom: 25px;
-         
+
 
           &:hover {
             color: #FFDB15;
-            -webkit-box-shadow: 3px 3px 25px 0px #000000;
+            box-shadow: 3px 3px 25px 0px #000000;
           }
 
           &:focus {

@@ -2,7 +2,6 @@
   <div class="row">
     <div class="white">
 
-
       <div id="wrap">
         <form (ngSubmit)="onSubmit()">
           <h1>
@@ -15,20 +14,20 @@
 
           <div class="field-of-form">
             <label class="header-of-input">Hasło</label>
-            <input type="text" class="input-form" name="name">
+            <input [type]="isChecked?'text':'password'" class="input-form" name="name">
           </div>
 
-          <div class="field-of-form">
-            <label class="header-of-input">Powtórz hasło</label>
-            <input type="text" class="input-form" name="surname">
+          <div class="field-of-form mt-2">    
+            <label class="header-of-input-2 "> <input type="checkbox" [(ngModel)]="isChecked" class="input-checbox" name="name">Pokaż hasło</label>
           </div>
+
           <button type="submit" class="btn"> ZALOGUJ </button>
         </form>
       </div>
 
-
     </div>
     <div class="yellow">
+
       <div class="imgDiv"><img [src]="'assets/images/p30.png'" alt=""></div>
     </div>
   </div>

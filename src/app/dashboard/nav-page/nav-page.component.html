@@ -7,10 +7,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" routerLink="login">Logowanie</a>
+          <li class="nav-item" *ngIf="!isLogged">
+            <a class="nav-link"  aria-current="page" routerLink="login">Logowanie</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!isLogged">
             <a class="nav-link" routerLink="register">Rejestracja</a>
           </li>
           <li class="nav-item">
@@ -21,6 +21,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="faq">FAQ</a>
+          </li>
+          <li class="nav-item" *ngIf="isLogged">
+            <a class="nav-link" (click)="logOut()">Wyloguj</a>
           </li>
         </ul>
       </div>
