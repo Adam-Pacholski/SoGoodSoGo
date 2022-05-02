@@ -6,6 +6,7 @@ import { FaqPageComponent } from './dashboard/faq-page/faq-page.component';
 import { WeclomePageComponent } from './dashboard/weclome-page/weclome-page.component';
 import { LoginPageComponent } from './user/login-page/login-page.component';
 import { RegisterPageComponent } from './user/register-page/register-page.component';
+import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
 
 const routes: Routes = [
   {
@@ -13,8 +14,12 @@ const routes: Routes = [
       { path: '', component: WeclomePageComponent },
       { path: 'faq', component: FaqPageComponent},
       { path: 'conact', component: ContactPageComponent},
+
+      { path: 'profile', component: ProfilePageComponent}
+
       { path: 'login', component: LoginPageComponent },
    { path: 'register', component: RegisterPageComponent }
+
     ]
   },
   

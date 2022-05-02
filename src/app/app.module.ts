@@ -16,6 +16,7 @@ import { ContactPageComponent } from './dashboard/contact-page/contact-page.comp
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     NavPageComponent,
     WeclomePageComponent,
     FaqPageComponent,
-    ContactPageComponent
+    ContactPageComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,
