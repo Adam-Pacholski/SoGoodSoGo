@@ -14,11 +14,15 @@ const routes: Routes = [
       { path: '', component: WeclomePageComponent },
       { path: 'faq', component: FaqPageComponent},
       { path: 'conact', component: ContactPageComponent},
+
       { path: 'profile', component: ProfilePageComponent}
+
+      { path: 'login', component: LoginPageComponent },
+   { path: 'register', component: RegisterPageComponent }
+
     ]
   },
-   { path: 'login', component: LoginPageComponent },
-   { path: 'register', component: RegisterPageComponent }
+  
 
   
 ];

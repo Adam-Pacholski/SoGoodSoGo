@@ -13,7 +13,6 @@ export class NavPageComponent implements OnInit {
 
   ngOnInit(): void {
 
-    
     if(localStorage.getItem('user')!==null){
      this.isLogged = true;
     } else this.isLogged = false;
