@@ -10,19 +10,26 @@
           </h1>
           <div class="field-of-form">
             <label class="header-of-input">E-mail</label>
-            <input type="text" class="input-form" name="email">
+            <input type="text" class="input-form" [(ngModel)] ="email"  name="email">
           </div>
 
           <div class="field-of-form">
             <label class="header-of-input">Hasło</label>
-            <input [type]="isChecked?'text':'password'" class="input-form" name="password">
+            <input [type]="isChecked?'text':'password'" [(ngModel)] ="password" class="input-form" name="password">
+          </div>
+
+          <div class="field-of-form">
+            <label class="header-of-input">Powtórz hasło </label>
+            <input [type]="isChecked?'text':'password'" [(ngModel)] ="rePassword" class="input-form" name="rePassword">
           </div>
 
           <div class="field-of-form mt-2">    
             <label class="header-of-input-2 "> <input type="checkbox" [(ngModel)]="isChecked" class="input-checbox" name="name">Pokaż hasło</label>
           </div>
 
-          <button type="submit" class="btn"> ZALOGUJ </button>
+          
+
+          <button type="submit" class="btn"> ZAREJESTRUJ </button>
         </form>
       </div>
 

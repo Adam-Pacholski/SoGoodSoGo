@@ -37,6 +37,7 @@ import { ProfilePageComponent } from './dashboard/profile-page/profile-page.comp
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

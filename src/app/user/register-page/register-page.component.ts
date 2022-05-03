@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register-page',
@@ -8,14 +9,33 @@ import { Router } from '@angular/router';
 })
 export class RegisterPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  email: string = '';
+  password: string = '';
+  rePassword: string = '';
+
   isChecked:boolean = false;
+  falsePassword: boolean = false;
+
+  constructor(
+   // private router: Router,
+    
+    private auth: AuthService 
+     ) { }
+
   ngOnInit(): void {
   }
 
   onSubmit(){
-    this.router.navigate(['']);
-    localStorage.setItem('user','adam');
+    
+    if(this.password == this.rePassword){
+      this.auth.signup(this.email, this.password);
+    }else {
+      
+    }
+    
+
   }
+
+  
 }
  

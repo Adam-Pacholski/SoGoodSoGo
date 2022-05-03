@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -8,14 +9,27 @@ import { Router } from '@angular/router';
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router, 
+    private route: ActivatedRoute,
+    private auth: AuthService
+    ) { }
+
   isChecked:boolean = false;
 
   ngOnInit(): void {
   }
 
   onSubmit(){
-    this.router.navigate(['']);
-    localStorage.setItem('user','adam');
+
+    
+    this.auth.test();
+
+    //localStorage.setItem('user','adam');
+   
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate(['/profile'],{relativeTo:this.route})
+    
   }
 }

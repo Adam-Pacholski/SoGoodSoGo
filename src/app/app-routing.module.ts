@@ -7,24 +7,24 @@ import { WeclomePageComponent } from './dashboard/weclome-page/weclome-page.comp
 import { LoginPageComponent } from './user/login-page/login-page.component';
 import { RegisterPageComponent } from './user/register-page/register-page.component';
 import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
+import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
 const routes: Routes = [
   {
     path: '', component: DashboardPageComponent, children: [
       { path: '', component: WeclomePageComponent },
-      { path: 'faq', component: FaqPageComponent},
-      { path: 'conact', component: ContactPageComponent},
-
-      { path: 'profile', component: ProfilePageComponent}
-
-      { path: 'login', component: LoginPageComponent },
-   { path: 'register', component: RegisterPageComponent }
-
+      { path: 'faq', component: FaqPageComponent },
+      { path: 'conact', component: ContactPageComponent },
+      { path: 'profile', component: ProfilePageComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin} },
+      { path: 'register', component: RegisterPageComponent },
+      { path: 'login', component: LoginPageComponent }
     ]
   },
-  
 
-  
+
+
 ];
 
 @NgModule({

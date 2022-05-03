@@ -1,4 +1,5 @@
 import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -9,16 +10,18 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 export class NavPageComponent implements OnInit {
 
   isLogged: boolean = false;
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
 
-    if(localStorage.getItem('user')!==null){
-     this.isLogged = true;
-    } else this.isLogged = false;
+    if(this.auth.isLogged == false){
+      localStorage.clear();
+     this.isLogged = false;
+    } else this.isLogged = true;
   }
 
   logOut(){
+    this.auth.isLogged = false;
     localStorage.clear();
     this.isLogged = false;
   }
