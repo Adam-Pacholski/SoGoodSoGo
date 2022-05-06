@@ -26,14 +26,6 @@ export class LoginPageComponent implements OnInit {
   onSubmit(){
 
     this.auth.signin(this.email,this.password);
-
-    //this.auth.test();
-
-    //localStorage.setItem('user','adam');
-   
-    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    // this.router.onSameUrlNavigation = 'reload';
-    // this.router.navigate(['/profile'],{relativeTo:this.route})
     
   }
 }

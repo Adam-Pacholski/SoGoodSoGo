@@ -40,6 +40,11 @@ export class FaqPageComponent implements OnInit {
 
   }
 
+  delete(){
+    this.faqS.deleteFaq(this.faqElement);
+    this.getList();
+  }
+
   collapse(i: number){
     this.faqElement = this.faqList[i];
     if(this.show === i){

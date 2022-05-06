@@ -11,7 +11,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 })
 export class NavPageComponent implements OnInit {
 
-
+  
   user: User = { id: '', name: '', surname: '', email: '' };
   isLogged: Boolean = false;
   constructor(private auth: AuthService) { }
@@ -23,40 +23,24 @@ export class NavPageComponent implements OnInit {
     onAuthStateChanged(_auth, (a) => {
     if (a) {
       // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/firebase.User
-      const uid = a.uid;
-      
-      this.auth.getUser(uid);
+    
+      const uuid: string = a.uid;
+      this.auth.getUser(uuid)
       this.auth.isLogged = true;
       this.isLogged = this.auth.isLogged;
       this.user = this.auth.user;
-      console.log(a);
-      
-      // ...
+      console.log(this.user);
+
     } else {
       // User is signed out
       // ...
     }
   });
-
-    // if(this.auth.isLogged == false){
-    //   localStorage.clear();
-    //   //this.auth.logout();
-    //   this.isLogged = false;
-    // } else{
-    //   this.isLogged = true;
-    //   this.user = this.auth.user;
-    // } 
   }
-
-
 
   logOut() {
 
-
     this.auth.logout();
-    // this.auth.isLogged = false;
-    // localStorage.clear();
     this.isLogged = false;
   }
 }

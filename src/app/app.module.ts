@@ -17,6 +17,7 @@ import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
+import { AboutUsPageComponent } from './dashboard/about-us-page/about-us-page.component';
 
 
 
@@ -30,7 +31,8 @@ import { ProfilePageComponent } from './dashboard/profile-page/profile-page.comp
     WeclomePageComponent,
     FaqPageComponent,
     ContactPageComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    AboutUsPageComponent
   ],
   imports: [
     BrowserModule,

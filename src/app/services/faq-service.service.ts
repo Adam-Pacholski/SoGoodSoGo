@@ -20,10 +20,11 @@ export class FaqServiceService {
         return {docId, ...data };
       }))
     );
-    this.faqCollection = afs.collection<FaqList>('FAQ',);
+    this.faqCollection = afs.collection<FaqList>('FAQ');
   }
 
   getFaq() {
+    
     return this.faqs;
   }
 
@@ -35,5 +36,9 @@ export class FaqServiceService {
   editFaq(data: FaqList){
     
     this.faqCollection.doc(data.docID).update({docID: data.docID ,id: data.id, question: data.question, answer: data.answer});
+  }
+
+  deleteFaq(data: FaqList){
+    this.faqCollection.doc(data.docID).delete();
   }
 }

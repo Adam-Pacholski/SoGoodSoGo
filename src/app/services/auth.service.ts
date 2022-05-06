@@ -17,6 +17,8 @@ export class AuthService {
   user:User = {id:'',name:'',surname:'',email:''};
   userRef?: AngularFirestoreDocument<User>;
 
+  user2!:Observable<User>;
+
   constructor(
     private auth: AngularFireAuth, 
     private router: Router,
@@ -37,7 +39,6 @@ export class AuthService {
       .then(res => {
         this.isLogged = true;
         this.userID = res.user?.uid;
-        localStorage.setItem('user', this.userID);
         this.getUser(this.userID);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
@@ -56,7 +57,6 @@ export class AuthService {
         console.log(this.user);
         this.userID = res.user?.uid;
         this.user.id = this.userID;
-        localStorage.setItem('user', this.userID);
         this.creatUser(this.userID, user);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
