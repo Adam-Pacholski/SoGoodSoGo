@@ -9,6 +9,9 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class LoginPageComponent implements OnInit {
 
+  email:string = "";
+  password:string = "";
+
   constructor(
     private router: Router, 
     private route: ActivatedRoute,
@@ -22,14 +25,15 @@ export class LoginPageComponent implements OnInit {
 
   onSubmit(){
 
-    
-    this.auth.test();
+    this.auth.signin(this.email,this.password);
+
+    //this.auth.test();
 
     //localStorage.setItem('user','adam');
    
-    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.router.onSameUrlNavigation = 'reload';
-    this.router.navigate(['/profile'],{relativeTo:this.route})
+    // this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    // this.router.onSameUrlNavigation = 'reload';
+    // this.router.navigate(['/profile'],{relativeTo:this.route})
     
   }
 }

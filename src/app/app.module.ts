@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,4 +49,5 @@ export class AppModule { }
 function getFirestore() {
   throw new Error('Function not implemented.');
 }
+
 

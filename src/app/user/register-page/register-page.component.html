@@ -2,7 +2,6 @@
   <div class="row">
     <div class="white">
 
-
       <div id="wrap">
         <form (ngSubmit)="onSubmit()">
           <h1>
@@ -10,7 +9,7 @@
           </h1>
           <div class="field-of-form">
             <label class="header-of-input">E-mail</label>
-            <input type="text" class="input-form" [(ngModel)] ="email"  name="email">
+            <input type="text" class="input-form" [(ngModel)] ="user.email"  name="email">
           </div>
 
           <div class="field-of-form">
@@ -27,12 +26,19 @@
             <label class="header-of-input-2 "> <input type="checkbox" [(ngModel)]="isChecked" class="input-checbox" name="name">Pokaż hasło</label>
           </div>
 
-          
+          <div class="field-of-form line">
+            <label class="header-of-input">Imię</label>
+            <input type="text" class="input-form" [(ngModel)] ="user.name"  name="name">
+          </div>
 
-          <button type="submit" class="btn"> ZAREJESTRUJ </button>
+          <div class="field-of-form">
+            <label class="header-of-input">Nazwisko</label>
+            <input type="text" class="input-form" [(ngModel)] ="user.surname"  name="surname">
+          </div>
+
+          <button type="submit" class="btn" [disabled]="password != rePassword || user.email== '' || password == '' "> ZAREJESTRUJ </button>
         </form>
       </div>
-
 
     </div>
     <div class="yellow">

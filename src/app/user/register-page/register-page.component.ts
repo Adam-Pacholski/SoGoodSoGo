@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -12,6 +13,7 @@ export class RegisterPageComponent implements OnInit {
   email: string = '';
   password: string = '';
   rePassword: string = '';
+  user: User = {id:'',name:'',surname:'',email:''};
 
   isChecked:boolean = false;
   falsePassword: boolean = false;
@@ -28,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
   onSubmit(){
     
     if(this.password == this.rePassword){
-      this.auth.signup(this.email, this.password);
+      this.auth.signup(this.user, this.password);
     }else {
       
     }

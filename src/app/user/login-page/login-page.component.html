@@ -9,12 +9,12 @@
           </h1>
           <div class="field-of-form">
             <label class="header-of-input">E-mail</label>
-            <input type="text" class="input-form" name="email">
+            <input type="text" class="input-form" [(ngModel)]="email" name="email">
           </div>
 
           <div class="field-of-form">
             <label class="header-of-input">Hasło</label>
-            <input [type]="isChecked?'text':'password'" class="input-form" name="name">
+            <input [type]="isChecked?'text':'password'" [(ngModel)]="password" class="input-form" name="password">
           </div>
 
           <div class="field-of-form mt-2">    

@@ -51,14 +51,14 @@
 
     // height: 100px;
     span {
-      padding-left: 80px;
-      font-size: 80px;
+      
+      font-size: 18px;
     }
 
     & #wrap {
 
       max-width: 500px;
-      height: 450px;
+      height: 650px;
       background-color: #FFDB15;
 
       display: flex;
@@ -133,6 +133,16 @@
               outline: none;
             }
           }
+        }
+
+        & .field-of-form.line {
+          border-top: 1px solid black;
+          margin-top: 20px;
+        }
+
+        & .field-of-form.line {
+          border-top: 1px solid black;
+          margin-top: 20px;
         }
 
         & .btn {
