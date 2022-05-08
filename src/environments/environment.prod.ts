@@ -1,11 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: "AIzaSyAH5WLn84CJ6pKqGAPByGtcyD4XOOilWp8",
-    authDomain: "sogoodsogo-7bf77.firebaseapp.com",
-    projectId: "sogoodsogo-7bf77",
-    storageBucket: "sogoodsogo-7bf77.appspot.com",
-    messagingSenderId: "91918202421",
-    appId: "1:91918202421:web:12742b0f31efc84e98637c"
+    apiKey: "AIzaSyBdbGASNoTUMoGgrsB5p_GCDxTfTh0OGfI",
+  authDomain: "sogoodsogoo-base.firebaseapp.com",
+  projectId: "sogoodsogoo-base",
+  storageBucket: "sogoodsogoo-base.appspot.com",
+  messagingSenderId: "400687111881",
+  appId: "1:400687111881:web:6043fa7b4e80d4c567b718",
+  measurementId: "G-ZV85WT51JV"
   }
 };

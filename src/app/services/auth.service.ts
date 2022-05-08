@@ -40,6 +40,7 @@ export class AuthService {
         this.isLogged = true;
         this.userID = res.user?.uid;
         this.getUser(this.userID);
+        
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate(['/profile'],{relativeTo:this.route});
