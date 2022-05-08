@@ -19,7 +19,6 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
 import { AboutUsPageComponent } from './dashboard/about-us-page/about-us-page.component';
 
-import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -42,11 +41,7 @@ import { AgmCoreModule } from '@agm/core';
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAOpsIXXNtPatWrudvwPMAc8iOuJNezJ44'
-    })
-
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
