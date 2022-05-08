@@ -1,6 +1,4 @@
-import { AgmMap } from '@agm/core';
 import { Component, OnInit } from '@angular/core';
-import { map } from '@firebase/util';
 import { Country } from 'src/app/interface/country';
 
 @Component({
