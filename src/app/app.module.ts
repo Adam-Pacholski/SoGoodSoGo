@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
 import { AboutUsPageComponent } from './dashboard/about-us-page/about-us-page.component';
 
+import { AgmCoreModule } from '@agm/core';
 
 
 
@@ -34,14 +35,18 @@ import { AboutUsPageComponent } from './dashboard/about-us-page/about-us-page.co
     ContactPageComponent,
     ProfilePageComponent,
     AboutUsPageComponent,
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule, 
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCbbquHVAxBpgom50GKn-7gLSAN_i2Xr40',
+      libraries: ['places']
+    })
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
