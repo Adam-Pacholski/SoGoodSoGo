@@ -22,6 +22,10 @@ export class ProfilePageComponent implements OnInit {
 
   }
 
+  changePassword(){
+    this.auth.changePassword();
+  }
+
   
 
 }

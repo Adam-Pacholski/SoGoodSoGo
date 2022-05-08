@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsPageComponent implements OnInit {
 
+
+  
+  lat = 10;
+  long = 7;
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  
 
 }

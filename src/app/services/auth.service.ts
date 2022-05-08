@@ -93,6 +93,7 @@ export class AuthService {
 
   changePassword(){
     const auth = getAuth();
+    console.log(this.user.email);
     sendPasswordResetEmail(auth, this.user.email)
       .then(() => {
         // Password reset email sent!

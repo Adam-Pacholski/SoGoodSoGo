@@ -29,7 +29,7 @@ export class NavPageComponent implements OnInit {
       this.auth.isLogged = true;
       this.isLogged = this.auth.isLogged;
       this.user = this.auth.user;
-      console.log(this.user);
+     // console.log(this.user);
 
     } else {
       // User is signed out
