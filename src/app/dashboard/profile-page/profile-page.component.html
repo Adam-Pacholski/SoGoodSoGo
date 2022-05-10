@@ -4,6 +4,16 @@
         
         <!-- <button (click)="changePassword()">zmien haslo</button> -->
         <h1>PROFIL UŻYTKOWNIKA</h1>
+        <h2>Witaj, {{user.name}} {{user.surname}}</h2>
+        <div class="row ${1| ,row-cols-2,row-cols-3, auto,justify-content-md-center,|}">
+            <div class="col">
+                test
+            </div>
+            <div class="col">
+                test
+            </div>
+        </div>
+        
         <div class = "wraper">
             <div class = "user-property">
                 <label class = "header-of-property">IMIĘ</label>
@@ -12,7 +22,7 @@
             <div class = "user-property">
                 <label class = "header-of-property">NAZWISKO</label>
                 <input type = "text" class = "input-property" name = "surname" > 
-            </div>   
+            </div>  <input class = "goals" type = "text" name = "achieved-goals"> 
         </div>
 
         <div class = "wraper">
@@ -21,7 +31,7 @@
         </div>
 
         <input class = "goals" type = "text" name = "goals">
-        
+        <footer> Copyright 2022;  Made and design by GrupaSuperDeveloperów</footer>
     </div>
 
     <div id = "right">
@@ -29,8 +39,7 @@
             <h1>LISTA ODWIEDZONYCH <br> KRAJÓW</h1>
             <button type = "button" class = "btn"> + DODAJ </button> 
         </div>
-        <input class = "goals" type = "text" name = "achieved-goals">
+        
     </div>
     
 </div>
-<footer> Copyright 2022;  Made and design by GrupaSuperDeveloperów</footer>
