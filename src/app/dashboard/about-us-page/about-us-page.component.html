@@ -1,18 +1,1 @@
-<div class="container">
-  <div class="row">
-    <div id="scroll" class="col-sm">
-      <div *ngFor="let k of krajList; let i = index" class="listBox">
-        <div class="heder" (click)="collapse(i)">{{ k.id }}. {{ k.name }}</div>
-        <div *ngIf="i===show" class="collapseBox">{{k.lat}},{{k.long}}</div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <agm-map [latitude]='lat' [longitude]='long' [zoom]="zoom">
 
-        <agm-marker [latitude]="lat" [longitude]="long">
-        </agm-marker>
-
-      </agm-map>
-    </div>
-  </div>
-</div>

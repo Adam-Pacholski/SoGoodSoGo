@@ -1,45 +1,95 @@
-<div id = "main-container">
+<div id="main-container">
 
-    <div id = "left">
-        
-        <!-- <button (click)="changePassword()">zmien haslo</button> -->
-        <h1>PROFIL UŻYTKOWNIKA</h1>
-        <h2>Witaj, {{user.name}} {{user.surname}}</h2>
-        <div class="row ${1| ,row-cols-2,row-cols-3, auto,justify-content-md-center,|}">
-            <div class="col">
-                test
-            </div>
-            <div class="col">
-                test
-            </div>
-        </div>
-        
-        <div class = "wraper">
-            <div class = "user-property">
-                <label class = "header-of-property">IMIĘ</label>
-                <input type = "text" class = "input-property" name = "name" >
-            </div>
-            <div class = "user-property">
-                <label class = "header-of-property">NAZWISKO</label>
-                <input type = "text" class = "input-property" name = "surname" > 
-            </div>  <input class = "goals" type = "text" name = "achieved-goals"> 
-        </div>
+  <div id="left">
 
-        <div class = "wraper">
-            <h1>MOJE CELE</h1>
-            <button type = "button" class = "btn"> + DODAJ </button>   
-        </div>
+    <!-- <button (click)="changePassword()">zmien haslo</button> -->
+    <h1>PROFIL UŻYTKOWNIKA</h1>
+    <div id="userName">
+      <h2>Witaj, {{user.name}} {{user.surname}}</h2>
+      <i *ngIf="!edit" (click)="openEdit()" class="fa-solid fa-pen-nib"></i>
 
-        <input class = "goals" type = "text" name = "goals">
-        <footer> Copyright 2022;  Made and design by GrupaSuperDeveloperów</footer>
+    </div>
+    <div *ngIf="edit" id="editName">
+
+      <div class="row">
+        <div class="col"><input type="text" placeholder="Imię" [(ngModel)]="user.name" class="input-property"
+            name="name"></div>
+        <div class="col"><input type="text" placeholder="Nazwisko" [(ngModel)]="user.surname" class="input-property"
+            name="surname"></div>
+
+        <div class="col"> <button type="submit" class="btn"><i class="icon fa-solid fa-floppy-disk"></i>
+            <span>Zmień</span> </button></div>
+        <div class="col"><button type="submit" (click)="openEdit()" class="btn"><i class="icon fa-solid fa-xmark"></i>
+            <span>Anuluj</span></button></div>
+      </div>
     </div>
 
-    <div id = "right">
-        <div class = "wraper">
-            <h1>LISTA ODWIEDZONYCH <br> KRAJÓW</h1>
-            <button type = "button" class = "btn"> + DODAJ </button> 
+    <div class="row border-dark border-top  mt-4">
+      <div class="col-3 pt-5  border-dark border-end">
+
+
+        <div class="row ms-4">
+          <button type="submit" (click)="openCountryList()" class="btn">
+            <i class="icon fa-solid fa-xmark"></i>
+            <span>Wszystkie kraje</span>
+          </button>
+
+
         </div>
-        
+        <div class="row mt-3">
+          <div class="ms-4 col-4">
+            <button type="submit" (click)=" openWishList()" class="btn">
+              <i class="icon fa-solid fa-xmark"></i>
+              <span>Lista życzeń</span>
+            </button>
+          </div>
+
+          <div class="row mt-3">
+            <div class="ms-4 col-4">
+              <button type="submit" (click)="openMyList()" class="btn">
+                <i class="icon fa-solid fa-xmark"></i>
+                <span>Moja lista</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="countryList" id="list" class="col-8 scroll pt-4 ms-4">
+        <h3 class="pb-3">Lista wszystkich krajów</h3>
+        <div class="scroll ">
+          <div *ngFor="let k of krajList; let i = index" class="listBox">
+            <div class="heder" (click)="collapse(i)">{{ k.id }}. {{ k.name }}</div>
+            <div *ngIf="i===show" class="collapseBox">{{k.lat}},{{k.long}}</div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="wishlist" id="list" class="col-8 scroll">
+        Lista życzeń
+      </div>
+      <div *ngIf="myList" id="list" class="col-8 scroll pt-4 ms-4">
+        <h3 class="pb-3">Lista krajów odwiedzonych</h3>
+
+        <div class="scroll ">
+          <div *ngFor="let k of krajList; let i = index" class="listBox">
+            <div class="heder" (click)="collapse(i)">{{ k.id }}. {{ k.name }}</div>
+            <div *ngIf="i===show" class="collapseBox">{{k.lat}},{{k.long}}</div>
+          </div>
+        </div>
+
+      </div>
+
     </div>
-    
+
+  </div>
+
+  <div id="right">
+    <agm-map [latitude]='lat' [longitude]='long' [zoom]="zoom">
+
+      <agm-marker [latitude]="lat" [longitude]="long">
+      </agm-marker>
+
+    </agm-map>
+
+  </div>
 </div>

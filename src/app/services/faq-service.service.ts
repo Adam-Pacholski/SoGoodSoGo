@@ -12,6 +12,7 @@ export class FaqServiceService {
   faqs: Observable<FaqList[]>;
 
   constructor(private afs: AngularFirestore) {
+    
     this.faqCollection = afs.collection<FaqList>('FAQ',ref => ref.orderBy('id'));
     this.faqs = this.faqCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
@@ -20,11 +21,10 @@ export class FaqServiceService {
         return {docId, ...data };
       }))
     );
-    this.faqCollection = afs.collection<FaqList>('FAQ');
+    
   }
 
   getFaq() {
-    
     return this.faqs;
   }
 
@@ -39,6 +39,7 @@ export class FaqServiceService {
   }
 
   deleteFaq(data: FaqList){
-    this.faqCollection.doc(data.docID).delete();
+  //  this.faqCollection.doc(data.docID).delete();
+    console.log(data.docID);
   }
 }

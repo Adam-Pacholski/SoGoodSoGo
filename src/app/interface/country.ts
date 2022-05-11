@@ -1,6 +1,8 @@
 export interface Country{
-    id: string;
+    docID: string;
+    id: number;
     name: string;
     lat: number;
     long: number;
+    capital: string;
 }
