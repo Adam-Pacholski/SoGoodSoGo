@@ -2,20 +2,26 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { map, Observable } from 'rxjs';
 import { Country } from '../interface/country';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CountriesService {
-
+export class UserMyListService {
 
   countriesColection!: AngularFirestoreCollection<Country>;
-  countriesList: Observable<Country[]>;
-  lenght: number = 0;
+  
+  countriesList!: Observable<Country[]>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private auth: AuthService) {
+    this.getList();
+   
+  }
 
-    this.countriesColection = this.afs.collection<Country>('countries', ref => ref.orderBy('name'));
+  getList(){
+
+     const ref = this.afs.collection('users').doc('Vaf79Yal8geCq0WE0A2SClo7SD02');
+    this.countriesColection = ref.collection('myList', ref => ref.orderBy('name'));
     this.countriesList = this.countriesColection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Country;
@@ -26,7 +32,6 @@ export class CountriesService {
   }
 
   getCountries() {
-    
     return this.countriesList;
   }
 
@@ -49,5 +54,4 @@ export class CountriesService {
   deleteCountry(data: Country) {
     this.countriesColection.doc(data.docID).delete();
   }
-
 }

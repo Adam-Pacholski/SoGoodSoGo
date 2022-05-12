@@ -39,7 +39,7 @@ export class FaqServiceService {
   }
 
   deleteFaq(data: FaqList){
-  //  this.faqCollection.doc(data.docID).delete();
+    this.faqCollection.doc(data.docID).delete();
     console.log(data.docID);
   }
 }

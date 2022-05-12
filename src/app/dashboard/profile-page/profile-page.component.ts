@@ -3,6 +3,7 @@ import { Country } from 'src/app/interface/country';
 import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { CountriesService } from 'src/app/services/countries.service';
+import { UserMyListService } from 'src/app/services/user-my-list.service';
 
 
 
@@ -19,8 +20,10 @@ export class ProfilePageComponent implements OnInit {
   countryList: boolean = false;
   wishlist: boolean = false;
   myList: boolean = true;
+  baza:boolean = false;
 
   lenght:number = 0;
+  lenght2:number = 0;
 
   lat: number = 51.124636;
   long: number = 14.682228;
@@ -30,27 +33,50 @@ export class ProfilePageComponent implements OnInit {
 
   docId:string='';
 
-  krajElement: Country = {docID:'', id: 0, name: '', lat: 0, long: 0, capital:''};
+  krajElement: Country = {docID:'', name: '', lat: 0, long: 0, capital:''};
+ 
 
   krajList: Country[] = [];
+  myCountryList: Country[] = [];
 
   constructor(private auth: AuthService,
-    private cs: CountriesService
+    private cs: CountriesService,
+    private userMyListS: UserMyListService
   ) { }
 
   ngOnInit(): void {
 
     this.user = this.auth.user;
     this.getCountiesList();
-    
+    this.getUserMyList();
+    this.porownanie();
+  }
 
+  porownanie(){
+
+for(let i = 0; i<this.lenght; i++){
+     for(let j=0; j<this.lenght2; j++){
+       console.log(i);
+       if(this.krajList[i].name===this.myCountryList[j].name){
+         this.krajList[i].list = true;
+         console.log(j);
+       }
+     }
+    }
   }
 
   getCountiesList(){
-    this.cs.getCountries().subscribe(items => {
+    this.cs.getCountries().subscribe(items => {     
       this.krajList = items;
-      this.lenght = this.krajList.length;
-      console.log(this.lenght);
+      this.lenght = this.krajList.length;      
+     })
+     
+  }
+
+  getUserMyList(){
+    this.userMyListS.getCountries().subscribe(items => {
+      this.myCountryList = items;
+      this.lenght2 = this.myCountryList.length;
     })
   }
 
@@ -63,16 +89,11 @@ export class ProfilePageComponent implements OnInit {
   }
 
 
-  collapse(i: number) {
+  mapLocation(i: number) {
     this.krajElement = this.krajList[i];
     this.lat = this.krajElement.lat;
     this.long = this.krajElement.long;
-    if (this.show === i) {
-      this.show = -1;
-      this.krajElement = {docID:'', id: 0, name: '', lat: 0, long: 0, capital:''};
-    } else {
-      this.show = i;
-    }
+    console.log(this.krajList[i]);
   }
 
   openMyList() {
@@ -80,18 +101,55 @@ export class ProfilePageComponent implements OnInit {
     this.wishlist = false;
     this.myList = true;
     this.countryList = false;
+    this.baza = false;
   }
 
   openWishList() {
     this.wishlist = true;
     this.myList = false;
     this.countryList = false;
+    this.baza = false;
   }
 
   openCountryList() {
     this.wishlist = false;
     this.myList = false;
     this.countryList = true;
+    this.baza = false;
+    console.log(this.lenght+"|"+this.lenght2);
+    this.porownanie();
+  }
+
+  openBaza(){
+    this.wishlist = false;
+    this.myList = false;
+    this.countryList = false;
+    this.baza = true;
+
+  }
+
+  // --- dodawanie do bazy lista uzytkownika
+
+  addToMyList(i:number){
+    
+    this.krajElement = this.krajList[i];
+    this.userMyListS.addCountry(this.krajElement);
+    console.log(this.krajElement);
+    this.porownanie();
+    this.openMyList();
+  }
+
+  // uzupelnianie bazy chwilowe
+  addCountry(){
+    this.cs.addCountry(this.krajElement);
+  }
+
+  editCountry(){
+    this.cs.editCountries(this.krajElement);
+  }
+
+  deleteCountry(){
+    this.cs.deleteCountry(this.krajElement);
   }
 
 }
