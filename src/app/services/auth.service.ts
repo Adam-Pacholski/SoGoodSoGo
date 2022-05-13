@@ -40,7 +40,7 @@ export class AuthService {
         this.isLogged = true;
         this.userID = res.user?.uid;
         this.getUser(this.userID);
-        
+        localStorage.setItem('uid',this.userID);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate(['/profile'],{relativeTo:this.route});
@@ -66,14 +66,17 @@ export class AuthService {
   }
 
   creatUser(uid: string, user: User){
-    this.db.collection('users').doc<User>(uid).set({email: user.email, name: user.name, surname: user.surname});
+    this.db.collection('users').doc<User>(uid).set({id: uid ,email: user.email, name: user.name, surname: user.surname});
   }
+
+  // wylogowanie sie
 
   logout() {
     this.auth.signOut();
     localStorage.clear;
     this.isLogged = false;
     this.user = {id:'',name:'',surname:'',email:''};
+    localStorage.clear();
     this.router.navigate([''])
   }
 

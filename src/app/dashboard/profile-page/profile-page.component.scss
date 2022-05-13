@@ -7,6 +7,11 @@ agm-map{
   cursor: pointer;
 }
 
+.myBorder {
+  border-right: 2px dashed black;
+  
+}
+
 .color{
   color: red;
 }
@@ -44,7 +49,7 @@ display: flex;
          vertical-align: middle;
        }
 
-       & div#name{
+       & div.namee{
          margin-right: auto;
        }
 

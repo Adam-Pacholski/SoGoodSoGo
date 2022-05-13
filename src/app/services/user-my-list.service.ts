@@ -12,15 +12,18 @@ export class UserMyListService {
   countriesColection!: AngularFirestoreCollection<Country>;
   
   countriesList!: Observable<Country[]>;
-
+  item: string | null;
   constructor(private afs: AngularFirestore, private auth: AuthService) {
+       
+    this.item = localStorage.getItem('uid');
+    
     this.getList();
    
   }
 
   getList(){
 
-     const ref = this.afs.collection('users').doc('Vaf79Yal8geCq0WE0A2SClo7SD02');
+     const ref = this.afs.collection('users').doc(String(this.item));
     this.countriesColection = ref.collection('myList', ref => ref.orderBy('name'));
     this.countriesList = this.countriesColection.snapshotChanges().pipe(
       map(actions => actions.map(a => {

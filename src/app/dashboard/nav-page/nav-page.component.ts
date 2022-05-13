@@ -2,6 +2,7 @@ import { Component, HostListener, Inject, OnInit } from '@angular/core';
 import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+ 
 
 
 @Component({
@@ -29,7 +30,8 @@ export class NavPageComponent implements OnInit {
       this.auth.isLogged = true;
       this.isLogged = this.auth.isLogged;
       this.user = this.auth.user;
-     // console.log(this.user);
+
+      localStorage.setItem('uid',uuid);
 
     } else {
       // User is signed out
