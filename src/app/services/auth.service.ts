@@ -14,7 +14,7 @@ export class AuthService {
 
   isLogged: Boolean = false; 
   userID: any;
-  user:User = {id:'',name:'',surname:'',email:''};
+  user:User = {id:'',name:'',surname:'',email:'', stat: false};
   userRef?: AngularFirestoreDocument<User>;
 
   user2!:Observable<User>;
@@ -90,6 +90,7 @@ export class AuthService {
         this.user.email = data.email;
         this.user.name = data.name;
         this.user.surname = data.surname;
+        this.user.stat = data.stat;
 
         //console.log(this.user);
       })  

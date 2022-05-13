@@ -15,7 +15,7 @@ import { UserWishListService } from 'src/app/services/user-wish-list.service';
 })
 export class ProfilePageComponent implements OnInit {
 
-  user: User = { id: '', name: '', surname: '', email: '' };
+  user: User = { id: '', name: '', surname: '', email: '', stat: false };
   edit: boolean = false;
 
   countryList: boolean = false;
@@ -58,6 +58,7 @@ export class ProfilePageComponent implements OnInit {
 
 
     this.user = this.auth.user;
+    console.log(this.user);
 
     this.porownanie();
   }
