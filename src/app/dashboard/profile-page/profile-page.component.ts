@@ -48,9 +48,6 @@ export class ProfilePageComponent implements OnInit {
     private userMyListS: UserMyListService,
     private userWishList: UserWishListService,
     private mapsAPILoader: MapsAPILoader,
-    private ngZone: NgZone,
-
-
   ) {
     this.getCountiesList();
     this.getUserWishList();
@@ -59,7 +56,6 @@ export class ProfilePageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentPosition();
@@ -150,7 +146,7 @@ export class ProfilePageComponent implements OnInit {
 
   // --- wszystkie kraje
   mapLocationAll(i: number) {
-
+    this.krajElement = this.krajList[i];
     this.lat = Number(this.krajList[i].lat);
     this.long = Number(this.krajList[i].long);
     this.zoom = 6;
