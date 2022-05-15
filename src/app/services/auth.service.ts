@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
-import {  ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, Observable } from 'rxjs';
 import { User } from '../interface/user';
 
@@ -12,25 +12,24 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 })
 export class AuthService {
 
-  isLogged: Boolean = false; 
+  isLogged: Boolean = false;
   userID: any;
-  user:User = {id:'',name:'',surname:'',email:'', stat: false};
+  user: User = { id: '', name: '', surname: '', email: '', stat: false };
   userRef?: AngularFirestoreDocument<User>;
 
-  user2!:Observable<User>;
+  user2!: Observable<User>;
 
   constructor(
-    private auth: AngularFireAuth, 
+    private auth: AngularFireAuth,
     private router: Router,
     private db: AngularFirestore,
     private route: ActivatedRoute
-    ) 
-    {}
+  ) { }
 
-  test(){
+  test() {
     this.isLogged = true;
     console.log(this.isLogged);
-    localStorage.setItem('user','adam');
+    localStorage.setItem('user', 'adam');
   }
 
   // logowanie
@@ -40,10 +39,10 @@ export class AuthService {
         this.isLogged = true;
         this.userID = res.user?.uid;
         this.getUser(this.userID);
-        localStorage.setItem('uid',this.userID);
+        localStorage.setItem('uid', this.userID);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['/profile'],{relativeTo:this.route});
+        this.router.navigate(['/profile'], { relativeTo: this.route });
         this.db.collection('users');
       });
 
@@ -61,12 +60,16 @@ export class AuthService {
         this.creatUser(this.userID, user);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
-        this.router.navigate(['/profile'],{relativeTo:this.route});
+        this.router.navigate(['/profile'], { relativeTo: this.route });
       })
   }
 
-  creatUser(uid: string, user: User){
-    this.db.collection('users').doc<User>(uid).set({id: uid ,email: user.email, name: user.name, surname: user.surname});
+  creatUser(uid: string, user: User) {
+    this.db.collection('users').doc<User>(uid).set({ id: uid, stat: false, email: user.email, name: user.name, surname: user.surname });
+  }
+
+  editNameSurnameUser(data: User) {
+    this.db.collection('users').doc<User>(data.id).update({ name: data.name, surname: data.surname });
   }
 
   // wylogowanie sie
@@ -75,16 +78,16 @@ export class AuthService {
     this.auth.signOut();
     localStorage.clear;
     this.isLogged = false;
-    this.user = {id:'',name:'',surname:'',email:''};
+    this.user = { id: '', name: '', surname: '', email: '' };
     localStorage.clear();
     this.router.navigate([''])
   }
 
-  getUser(uid: string){
-    
+  getUser(uid: string) {
+
     this.userRef = this.db.doc('users/' + uid);
     this.userRef.snapshotChanges().pipe(
-      map(res => ({id:res.payload.id,...res.payload.data() as User})))
+      map(res => ({ id: res.payload.id, ...res.payload.data() as User })))
       .subscribe(data => {
         this.user.id = data.id;
         this.user.email = data.email;
@@ -93,10 +96,12 @@ export class AuthService {
         this.user.stat = data.stat;
 
         //console.log(this.user);
-      })  
+      })
   }
 
-  changePassword(){
+
+
+  changePassword() {
     const auth = getAuth();
     console.log(this.user.email);
     sendPasswordResetEmail(auth, this.user.email)

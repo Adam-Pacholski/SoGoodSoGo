@@ -34,7 +34,6 @@ export class FaqServiceService {
   }
 
   editFaq(data: FaqList){
-    
     this.faqCollection.doc(data.docID).update({docID: data.docID ,id: data.id, question: data.question, answer: data.answer});
   }
 

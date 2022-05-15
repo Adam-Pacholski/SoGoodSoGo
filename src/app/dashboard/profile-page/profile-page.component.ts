@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { Country } from 'src/app/interface/country';
 import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -30,7 +31,7 @@ export class ProfilePageComponent implements OnInit {
   lat: number = 51.124636;
   long: number = 14.682228;
   show: number = -1;
-  zoom: number = 4;
+  zoom: number = 15;
   location: Object = {};
 
   docId: string = '';
@@ -45,7 +46,11 @@ export class ProfilePageComponent implements OnInit {
   constructor(private auth: AuthService,
     private cs: CountriesService,
     private userMyListS: UserMyListService,
-    private userWishList: UserWishListService
+    private userWishList: UserWishListService,
+    private mapsAPILoader: MapsAPILoader,
+    private ngZone: NgZone,
+
+
   ) {
     this.getCountiesList();
     this.getUserWishList();
@@ -56,7 +61,9 @@ export class ProfilePageComponent implements OnInit {
   ngOnInit(): void {
 
 
-
+    this.mapsAPILoader.load().then(() => {
+      this.setCurrentPosition();
+    });
     this.user = this.auth.user;
     console.log(this.user);
 
@@ -64,22 +71,32 @@ export class ProfilePageComponent implements OnInit {
   }
 
   porownanie() {
-    
+
     for (let i = 0; i < this.lenghtAll; i++) {
       for (let j = 0; j < this.lenghtWishList; j++) {
         // console.log(i);
         if (this.krajList[i].name === this.myWishList[j].name) {
           this.krajList[i].wish = true;
-          
+
           // console.log(j);
         }
-        
+
       }
-      for(let k = 0; k<this.lenghtMyList; k++){
-        if(this.krajList[i].name === this.myCountryList[k].name) {
+      for (let k = 0; k < this.lenghtMyList; k++) {
+        if (this.krajList[i].name === this.myCountryList[k].name) {
           this.krajList[i].list = true;
         }
       }
+    }
+  }
+
+  private setCurrentPosition() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.lat = position.coords.latitude;
+        this.long = position.coords.longitude;
+        this.zoom = 8;
+      });
     }
   }
 
@@ -93,7 +110,7 @@ export class ProfilePageComponent implements OnInit {
   }
 
   // ---
- 
+
 
   // --- menu list
   openMyList() {
@@ -133,9 +150,12 @@ export class ProfilePageComponent implements OnInit {
 
   // --- wszystkie kraje
   mapLocationAll(i: number) {
-    this.krajElement = this.krajList[i];
-    this.lat = this.krajElement.lat;
-    this.long = this.krajElement.long;
+
+    this.lat = Number(this.krajList[i].lat);
+    this.long = Number(this.krajList[i].long);
+    this.zoom = 6;
+
+
     // console.log(this.krajElement);
   }
 
@@ -158,12 +178,11 @@ export class ProfilePageComponent implements OnInit {
   // --- Lista zyczen krajow
 
   mapLocationWish(i: number) {
-    this.krajElement = this.myWishList[i];
-    this.lat = this.krajElement.lat;
-    this.long = this.krajElement.long;
-    // console.log(this.krajElement);
+    this.lat = Number(this.myWishList[i].lat);
+    this.long = Number(this.myWishList[i].long);
+    this.zoom = 6;
   }
-  
+
 
   getUserWishList() {
     this.userWishList.getCountries().subscribe(items => {
@@ -172,17 +191,17 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
-  removeFromWishList(i: number){
+  removeFromWishList(i: number) {
     this.userWishList.deleteCountry(this.myWishList[i]);
     this.porownanie();
   }
 
   // --- Lista odwiedzonych krajow
   mapLocationMyList(i: number) {
-    this.krajElement = this.myCountryList[i];
-    this.lat = this.krajElement.lat;
-    this.long = this.krajElement.long;
-    // console.log(this.krajElement);
+    
+    this.lat = Number(this.myCountryList[i].lat);
+    this.long = Number(this.myCountryList[i].long);
+    this.zoom = 6;
   }
 
   getUserMyList() {
@@ -194,19 +213,25 @@ export class ProfilePageComponent implements OnInit {
 
   addToMyList(i: number) {
     console.log(this.krajList[i]);
-     this.userMyListS.addCountry(this.krajList[i]);
+    this.userMyListS.addCountry(this.krajList[i]);
 
-     this.getUserMyList();
-     this.getUserWishList();
-     try {
-       this.removeFromWishList(i)
-     } catch (error) {
-       console.log('brak w bazie');
-     }
-     
-    
+    this.getUserMyList();
+    this.getUserWishList();
+    try {
+      this.removeFromWishList(i)
+    } catch (error) {
+      console.log('brak w bazie');
+    }
+
+
     this.porownanie();
     this.openMyList();
+  }
+
+  editUser(){
+    // console.log(this.user.name + " " + this.user.surname);
+    this.auth.editNameSurnameUser(this.user);
+    this.edit = false;
   }
 
   // uzupelnianie bazy chwilowe

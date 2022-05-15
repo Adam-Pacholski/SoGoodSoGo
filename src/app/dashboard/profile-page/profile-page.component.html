@@ -5,8 +5,8 @@
     <!-- <button (click)="changePassword()">zmien haslo</button> -->
     <h1>PROFIL UŻYTKOWNIKA</h1>
     <div id="userName">
-      <h2>Witaj, {{user.name}} {{user.surname}}</h2>
-      <i *ngIf="!edit" (click)="openEdit()" class="fa-solid fa-pen-nib"></i>
+      <h2>Witaj, {{user.name}} {{user.surname }}</h2>
+      <i *ngIf="!edit" (click)="openEdit()" class="ms-2 fa-solid fa-pen-nib"></i>
 
     </div>
     <div *ngIf="edit" id="editName">
@@ -17,7 +17,7 @@
         <div class="col"><input type="text" placeholder="Nazwisko" [(ngModel)]="user.surname" class="input-property"
             name="surname"></div>
 
-        <div class="col"> <button type="submit" class="btn"><i class="icon fa-solid fa-floppy-disk"></i>
+        <div class="col"> <button type="submit" (click)="editUser()" class="btn"><i class="icon fa-solid fa-floppy-disk"></i>
             <span>Zmień</span> </button></div>
         <div class="col"><button type="submit" (click)="openEdit()" class="btn"><i class="icon fa-solid fa-xmark"></i>
             <span>Anuluj</span></button></div>
@@ -168,9 +168,9 @@
 
 
   <div id="right">
-    <agm-map [latitude]='lat' [longitude]='long' [zoom]="zoom">
+    <agm-map  [latitude]='lat' [longitude]='long' [zoom]="zoom" [usePanning]="true" [scrollwheel]="true">
 
-      <agm-marker [latitude]="lat" [longitude]="long">
+      <agm-marker  [latitude]="lat" [longitude]="long">
       </agm-marker>
 
     </agm-map>
