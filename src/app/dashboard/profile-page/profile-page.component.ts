@@ -22,8 +22,7 @@ export class ProfilePageComponent implements OnInit {
   countryList: boolean = false;
   wishlist: boolean = false;
   myList: boolean = true;
-  baza: boolean = false;
-
+  
   lenghtAll: number = 0;
   lenghtWishList: number = 0;
   lenghtMyList: number = 0;
@@ -37,7 +36,6 @@ export class ProfilePageComponent implements OnInit {
   docId: string = '';
 
   krajElement: Country = { docID: '', name: '', lat: 0, long: 0, capital: '' };
-
 
   krajList: Country[] = [];
   myCountryList: Country[] = [];
@@ -114,25 +112,21 @@ export class ProfilePageComponent implements OnInit {
     this.wishlist = false;
     this.myList = true;
     this.countryList = false;
-    this.baza = false;
-    // this.porownanie();
+  
   }
 
   openWishList() {
     this.wishlist = true;
     this.myList = false;
     this.countryList = false;
-    this.baza = false;
-    // console.log(this.krajList);
-    // this.porownanie();
+
   }
 
   openCountryList() {
     this.wishlist = false;
     this.myList = false;
     this.countryList = true;
-    this.baza = false;
-    // console.log(this.lenghtAll + "|" + this.lenghtWishList);
+
     this.porownanie();
   }
 
@@ -140,7 +134,7 @@ export class ProfilePageComponent implements OnInit {
     this.wishlist = false;
     this.myList = false;
     this.countryList = false;
-    this.baza = true;
+
 
   }
 
@@ -229,21 +223,4 @@ export class ProfilePageComponent implements OnInit {
     this.auth.editNameSurnameUser(this.user);
     this.edit = false;
   }
-
-  // uzupelnianie bazy chwilowe
-  addCountry() {
-    this.cs.addCountry(this.krajElement);
-    this.krajElement = { docID: '', name: '', lat: 0, long: 0, capital: '' };
-  }
-
-  editCountry() {
-    this.cs.editCountries(this.krajElement);
-    this.krajElement = { docID: '', name: '', lat: 0, long: 0, capital: '' };
-  }
-
-  deleteCountry() {
-    this.cs.deleteCountry(this.krajElement);
-    this.krajElement = { docID: '', name: '', lat: 0, long: 0, capital: '' };
-  }
-
 }
