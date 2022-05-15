@@ -17,32 +17,32 @@
 
     <div id="wrap">
 
-      <form>
+      <form (ngSubmit)="sendPost()">
 
         <div class="field-of-form">
-          <label class="header-of-input">E-mail</label>
-          <input type="text" class="input-form" name="email">
+          <label class="header-of-input" >E-mail</label>
+          <input type="text" [(ngModel)]="post.email" class="input-form" name="email">
         </div>
 
         <div class="field-of-form">
-          <label class="header-of-input">Imie</label>
-          <input type="text" class="input-form" name="name">
+          <label class="header-of-input" >Imie</label>
+          <input type="text" [(ngModel)]="post.name" class="input-form" name="name">
         </div>
 
         <div class="field-of-form">
-          <label class="header-of-input">Nazwisko</label>
-          <input type="text" class="input-form" name="surname">
+          <label class="header-of-input" >Nazwisko</label>
+          <input type="text" [(ngModel)]="post.surname" class="input-form" name="surname">
         </div>
 
         <div class="field-of-form">
-          <label class="header-of-input">Wiadomość</label>
-          <textarea id="inputMessage" type="text" class="input-form" name="message"></Textarea>
+          <label class="header-of-input" >Wiadomość</label>
+          <textarea id="inputMessage" [(ngModel)]="post.message" type="text" class="input-form" name="message"></Textarea>
         </div>
 
-        <form action="*">
+       
           <button type="submit" class="btn"> ZATWIERDŹ </button>
-          <button type="reset" class="btn"> WYCZYŚĆ </button>
-        </form>
+          <button type="reset" class="btn" (click)="clear()"> WYCZYŚĆ </button>
+       
 
       </form>
 

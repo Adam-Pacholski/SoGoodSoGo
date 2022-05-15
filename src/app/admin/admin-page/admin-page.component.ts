@@ -10,20 +10,15 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class AdminPageComponent implements OnInit {
 
-
-
   constructor(private auth: AuthService, private router: Router) {
-    if(auth.user.stat === false){
+    if(this.auth.user.stat === false){
      
         this.router.navigate(['/']);
     }
   }
 
   ngOnInit(): void {
-    console.log(this.auth.user.stat);
+   // console.log(this.auth.user.stat);
     
   }
-
-
-
 }
