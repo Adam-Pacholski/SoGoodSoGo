@@ -233,14 +233,17 @@ export class ProfilePageComponent implements OnInit {
   // uzupelnianie bazy chwilowe
   addCountry() {
     this.cs.addCountry(this.krajElement);
+    this.krajElement = { docID: '', name: '', lat: 0, long: 0, capital: '' };
   }
 
   editCountry() {
     this.cs.editCountries(this.krajElement);
+    this.krajElement = { docID: '', name: '', lat: 0, long: 0, capital: '' };
   }
 
   deleteCountry() {
     this.cs.deleteCountry(this.krajElement);
+    this.krajElement = { docID: '', name: '', lat: 0, long: 0, capital: '' };
   }
 
 }
