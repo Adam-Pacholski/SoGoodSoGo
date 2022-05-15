@@ -1,0 +1,32 @@
+<h2>Poczta</h2>
+
+<div class="" id="nieprzeczytane">
+  <h3>Nieprzeczytane wiadomości</h3>
+
+  <div *ngFor="let k of postList; let i = index">
+    <div *ngIf="k.readStat === false" class="scroll listBox pointer">
+      <div>
+        <div class="heder border-bottom d-flex">
+          <div>{{ i+1 }}.</div>{{k.name}} | {{k.surname}} | {{ k.email }}
+          <i (click)="read(i)" class="ms-auto fa-solid fa-check"></i>
+        </div>
+        <div>{{k.message}}</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="przeczytane">
+  <h3>Przeczytane wiadomości</h3>
+
+  <div *ngFor="let k of postList; let i = index">
+    <div *ngIf="k.readStat === true" class="scroll listBox pointer">
+      <div>
+        <div class="heder border-bottom d-flex">
+          <div>{{ i+1 }}.</div>{{k.name}} | {{k.surname}} | {{ k.email }} |
+        </div>
+        <div>{{k.message}}</div>
+      </div>
+    </div>
+  </div>
+</div>

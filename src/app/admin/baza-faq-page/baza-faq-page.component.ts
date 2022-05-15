@@ -3,30 +3,27 @@ import { FaqList } from 'src/app/interface/faqListInterface';
 import { FaqServiceService } from 'src/app/services/faq-service.service';
 
 @Component({
-  selector: 'app-faq-page',
-  templateUrl: './faq-page.component.html',
-  styleUrls: ['./faq-page.component.scss']
+  selector: 'app-baza-faq-page',
+  templateUrl: './baza-faq-page.component.html',
+  styleUrls: ['./baza-faq-page.component.scss']
 })
-export class FaqPageComponent implements OnInit {
-
+export class BazaFaqPageComponent implements OnInit {
+  
   faqList : FaqList[] = [];
-  show: number = -1;
-  dlugosc: number = 0;
   faqElement: FaqList = {docID:'', id:0 , question:'', answer:'' };
+  dlugosc: number = 0;
+  show: number = -1;
 
-  constructor(private faqS: FaqServiceService) { 
+  constructor(private faqS: FaqServiceService) {
     this.getList();
    }
 
   ngOnInit(): void {
-     
   }
-
   getList(){
     this.faqS.getFaq().subscribe(items => {
       this.faqList = items;
       this.dlugosc = this.faqList.length;
-      //console.log(this.faqList);
     });
   }
 
@@ -56,4 +53,5 @@ export class FaqPageComponent implements OnInit {
       this.show = i;
     }
   }
+
 }

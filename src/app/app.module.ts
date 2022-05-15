@@ -20,6 +20,10 @@ import { ProfilePageComponent } from './dashboard/profile-page/profile-page.comp
 import { AboutUsPageComponent } from './dashboard/about-us-page/about-us-page.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import { BazaKrajowPageComponent } from './admin/baza-krajow-page/baza-krajow-page.component';
+import { BazaFaqPageComponent } from './admin/baza-faq-page/baza-faq-page.component';
+import { PostPageComponent } from './admin/post-page/post-page.component';
 
 
 
@@ -35,6 +39,10 @@ import { AgmCoreModule } from '@agm/core';
     ContactPageComponent,
     ProfilePageComponent,
     AboutUsPageComponent,
+    AdminPageComponent,
+    BazaKrajowPageComponent,
+    BazaFaqPageComponent,
+    PostPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,10 +50,7 @@ import { AgmCoreModule } from '@agm/core';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, 
-    AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDWK1mQdfs58uk0851oATf6T-lDBtNY8qk',
-      libraries: ['places']
-    })
+    AgmCoreModule.forRoot(environment.google)
     
   ],
   providers: [],

@@ -1,36 +1,130 @@
-<div id = "main-container">
+<div id="main-container">
 
-    <div id = "left">
-        
-        <!-- <button (click)="changePassword()">zmien haslo</button> -->
-        <h1>PROFIL UŻYTKOWNIKA</h1>
-        <div class = "wraper">
-            <div class = "user-property">
-                <label class = "header-of-property">IMIĘ</label>
-                <input type = "text" class = "input-property" name = "name" >
+  <div id="left">
+
+    <!-- <button (click)="changePassword()">zmien haslo</button> -->
+    <h1>PROFIL UŻYTKOWNIKA</h1>
+    <div id="userName">
+      <h2>Witaj, {{user.name}} {{user.surname }}</h2>
+      <i *ngIf="!edit" (click)="openEdit()" class="ms-2 fa-solid fa-pen-nib"></i>
+
+    </div>
+    <div *ngIf="edit" id="editName">
+
+      <div class="row">
+        <div class="col"><input type="text" placeholder="Imię" [(ngModel)]="user.name" class="input-property"
+            name="name"></div>
+        <div class="col"><input type="text" placeholder="Nazwisko" [(ngModel)]="user.surname" class="input-property"
+            name="surname"></div>
+
+        <div class="col"> <button type="submit" (click)="editUser()" class="btn"><i
+              class="icon fa-solid fa-floppy-disk"></i>
+            <span>Zmień</span> </button></div>
+        <div class="col"><button type="submit" (click)="openEdit()" class="btn"><i class="icon fa-solid fa-xmark"></i>
+            <span>Anuluj</span></button></div>
+      </div>
+    </div>
+
+    <div class="row border-dark border-top mt-4">
+      <div class="col-3 pt-5  border-dark border-end">
+
+
+        <div class="row ms-4">
+          <button type="submit" (click)="openCountryList()" class="btn">
+            <i class="icon fa-solid fa-xmark"></i>
+            <span>Wszystkie kraje</span>
+          </button>
+
+
+        </div>
+        <div class="row mt-3">
+          <div class="ms-4 col-4">
+            <button type="submit" (click)=" openWishList()" class="btn">
+              <i class="icon fa-solid fa-xmark"></i>
+              <span>Lista życzeń</span>
+            </button>
+          </div>
+
+          <div class="row mt-3">
+            <div class="ms-4 col-4">
+              <button type="submit" (click)="openMyList()" class="btn">
+                <i class="icon fa-solid fa-xmark"></i>
+                <span>Moja lista</span>
+              </button>
             </div>
-            <div class = "user-property">
-                <label class = "header-of-property">NAZWISKO</label>
-                <input type = "text" class = "input-property" name = "surname" > 
-            </div>   
+          </div>
+         
+        </div>
+      </div>
+
+      <div *ngIf="countryList" id="list" class="col-7 pt-4 ms-4">
+        <h3 class="pb-3">Lista wszystkich krajów</h3>
+        <div class="scroll ">
+          <div *ngFor="let k of krajList; let i = index" class="listBox">
+            <div class="heder d-flex pointer" (click)="mapLocationAll(i)">
+              <div [ngClass]="{'color': k.list===true || k.wish===true}">{{ i+1 }}.</div>
+              <div class="namee">{{ k.name }}</div>
+              <div *ngIf="!k.wish==true && !k.list===true" (click)=" addToWishList(i)" class="me-3 myBorder">Cel<i
+                  class="icon fa-solid fa-plus"></i></div>
+              <div *ngIf="!k.list===true" (click)=" addToMyList(i)" class="me-3 myBorder">Osiagniete<i
+                  class="icon fa-solid fa-plus"></i></div>
+
+              <div><i class="icon fa-solid fa-location-dot"></i></div>
+            </div>
+            <!-- <div *ngIf="i===show" class="collapseBox">{{k.lat}},{{k.long}}</div> -->
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="wishlist" id="list" class="col-7 pt-4 ms-4">
+        <h3 class="pb-3">Lista zyczen</h3>
+
+        <div class="scroll ">
+          <div *ngFor="let k of myWishList; let i = index" class="listBox" (click)="mapLocationWish(i)">
+            <div class="heder d-flex pointer">
+              <div [ngClass]="{'color': k.list===true}">{{ i+1 }}.</div>
+              <div class="namee">{{ k.name }}</div>
+              <div (click)=" addToMyList(i)" class="me-3 myBorder">Osiagniete<i class="icon fa-solid fa-plus"></i></div>
+              <div (click)="removeFromWishList(i)" class="me-3 myBorder">Usun<i class="icon fa-solid fa-plus"></i></div>
+
+              <div><i class="icon fa-solid fa-location-dot"></i></div>
+
+
+            </div>
+            <!-- <div *ngIf="i===show" class="collapseBox">{{k.lat}},{{k.long}}</div> -->
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="myList" id="list" class="col-7 scroll pt-4 ms-4">
+        <h3 class="pb-3">Lista krajów odwiedzonych</h3>
+
+        <div class="scroll ">
+          <div *ngFor="let k of myCountryList; let i = index" class="listBox" (click)="mapLocationMyList(i)">
+            <div class="heder d-flex pointer">
+              <div [ngClass]="{'color': k.list===true}">{{ i+1 }}.</div>
+              <div class="namee">{{ k.name }}, stolica: {{k.capital}}</div>
+
+
+              <div><i class="icon fa-solid fa-location-dot"></i></div>
+
+            </div>
+          </div>
         </div>
 
-        <div class = "wraper">
-            <h1>MOJE CELE</h1>
-            <button type = "button" class = "btn"> + DODAJ </button>   
-        </div>
+      </div>
 
-        <input class = "goals" type = "text" name = "goals">
-        
     </div>
+  </div>
 
-    <div id = "right">
-        <div class = "wraper">
-            <h1>LISTA ODWIEDZONYCH <br> KRAJÓW</h1>
-            <button type = "button" class = "btn"> + DODAJ </button> 
-        </div>
-        <input class = "goals" type = "text" name = "achieved-goals">
-    </div>
-    
+
+  <div id="right">
+    <agm-map [latitude]='lat' [longitude]='long' [zoom]="zoom" [usePanning]="true" [scrollwheel]="true">
+
+      <agm-marker [latitude]="lat" [longitude]="long">
+      </agm-marker>
+
+    </agm-map>
+  </div>
 </div>
-<footer> Copyright 2022;  Made and design by GrupaSuperDeveloperów</footer>
