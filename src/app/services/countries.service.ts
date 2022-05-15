@@ -15,7 +15,7 @@ export class CountriesService {
 
   constructor(private afs: AngularFirestore) {
 
-    this.countriesColection = this.afs.collection<Country>('countries', ref => ref.orderBy('name', "asc"));
+    this.countriesColection = this.afs.collection<Country>('countries', ref => ref.orderBy('name'));
     this.countriesList = this.countriesColection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as Country;
