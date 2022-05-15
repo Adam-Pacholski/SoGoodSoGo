@@ -1,0 +1,23 @@
+.container {
+    padding-top: 100px;
+}
+
+#nav {
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.btn {
+    width: 200px;
+}
+ 
+a {
+    width: 200px;
+
+    &:hover{
+       
+            -webkit-box-shadow: 3px 3px 25px 0px #000000;
+          
+    }
+}
+

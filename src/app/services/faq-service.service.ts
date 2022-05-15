@@ -13,7 +13,7 @@ export class FaqServiceService {
 
   constructor(private afs: AngularFirestore) {
     
-    this.faqCollection = afs.collection<FaqList>('FAQ',ref => ref.orderBy('id'));
+    this.faqCollection = this.afs.collection<FaqList>('FAQ',ref => ref.orderBy('id'));
     this.faqs = this.faqCollection.snapshotChanges().pipe(
       map(actions => actions.map(a => {
         const data = a.payload.doc.data() as FaqList;

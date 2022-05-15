@@ -1,0 +1,59 @@
+.container{
+ 
+}
+
+.scroll {
+    overflow-y: scroll;
+    height: 500px;
+    padding-right: 10px;
+  }
+
+.listBox {
+    background-color: #F5F5EF;
+    //width: 90%;
+    padding: 10px 20px 10px 20px ;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 50px;
+    
+    &:hover {
+        background-color: #FFDB15; 
+    }
+
+    -webkit-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
+    & .heder {
+       font-weight: bold; 
+      
+       align-items:center;
+
+       & div {
+         vertical-align: middle;
+       }
+
+       & div.namee{
+         margin-right: auto;
+       }
+
+       & i {
+      
+         padding: 0;
+         vertical-align: middle;
+
+        &:hover {
+          color: #F5F5EF;
+        }
+
+       }
+      
+    }
+
+    & .collapseBox {
+       border-top: 1px black solid; 
+       padding-top: 5px;
+
+    }
+}

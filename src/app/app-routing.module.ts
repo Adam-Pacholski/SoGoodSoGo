@@ -9,6 +9,10 @@ import { RegisterPageComponent } from './user/register-page/register-page.compon
 import { ProfilePageComponent } from './dashboard/profile-page/profile-page.component';
 import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/compat/auth-guard';
 import { AboutUsPageComponent } from './dashboard/about-us-page/about-us-page.component';
+import { AdminPageComponent } from './admin/admin-page/admin-page.component';
+import { BazaKrajowPageComponent } from './admin/baza-krajow-page/baza-krajow-page.component';
+import { BazaFaqPageComponent } from './admin/baza-faq-page/baza-faq-page.component';
+import { PostPageComponent } from './admin/post-page/post-page.component';
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 
@@ -21,7 +25,12 @@ const routes: Routes = [
       { path: 'profile', component: ProfilePageComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin} },
       { path: 'register', component: RegisterPageComponent },
       { path: 'login', component: LoginPageComponent },
-      { path: 'about-us',component: AboutUsPageComponent }
+      { path: 'about-us',component: AboutUsPageComponent },
+      { path: 'admin', component:AdminPageComponent, canActivate: [AngularFireAuthGuard], data: {authGuardPipe: redirectUnauthorizedToLogin}, children: [
+        {path: '',component:PostPageComponent},
+        {path: 'baza-krajow', component: BazaKrajowPageComponent},
+        {path: 'baza-faq',component:BazaFaqPageComponent}
+      ]}
     ]
   },
 

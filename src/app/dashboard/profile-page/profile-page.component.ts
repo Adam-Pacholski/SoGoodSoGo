@@ -61,7 +61,7 @@ export class ProfilePageComponent implements OnInit {
       this.setCurrentPosition();
     });
     this.user = this.auth.user;
-    console.log(this.user);
+   // console.log(this.user);
 
     this.porownanie();
   }

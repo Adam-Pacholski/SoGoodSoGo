@@ -1,0 +1,53 @@
+<h2>Baza krajów</h2>
+<div class="row">
+    <div class="col-3">
+        <form (ngSubmit)="addCountry()" style=" margin-left: auto; margin-right: auto; margin-top: 10px;">
+           
+            <div class="form-floating">
+              <textarea class="form-control" [(ngModel)]="krajElement.name" name="name" placeholder="Leave a comment here"
+                id="lat"></textarea>
+              <label for="floatingTextarea">Kraj</label>
+            </div>
+            <div class="form-floating mt-3">
+              <textarea class="form-control" [(ngModel)]="krajElement.lat" name="lat" placeholder="Leave a comment here"
+                id="lat"></textarea>
+              <label for="floatingTextarea">Lat</label>
+            </div>
+            <div class="form-floating mt-3">
+              <textarea class="form-control" [(ngModel)]="krajElement.long" name="long" placeholder="Leave a comment here"
+                id="long"></textarea>
+              <label for="floatingTextarea">Long</label>
+            </div>
+            <div class="form-floating mt-3">
+              <textarea class="form-control" [(ngModel)]="krajElement.capital" name="capital"
+                placeholder="Leave a comment here" id="capital"></textarea>
+              <label for="floatingTextarea">Stolica</label>
+            </div>
+            <button type="submit" class="btn btn-success me-3 mt-3">Dodaj</button>
+            <button type="button" (click)="editCountry()" class="btn btn-primary me-3 mt-3">Zmień</button>
+            <button type="button" (click)="deleteCountry()" class="btn btn-danger mt-3">Usuń</button>
+          </form>
+  
+
+    </div>
+
+    <div class="col-5">
+        <div class="scroll">
+            <div *ngFor="let k of countriesList; let i = index" class="listBox pointer" (click)="mapLocationAll(i)">
+              <div class="heder border-bottom d-flex" >
+                <div>{{ i+1 }}.</div> {{ k.name }} | {{k.capital}} 
+              </div>
+              <div>Lat: {{k.lat}}</div>
+              <div>Long: {{k.long}}</div>
+            </div>
+          </div>
+    </div>
+    <div class="col-4">
+        <agm-map  [latitude]='lat' [longitude]='long' [zoom]="zoom" [usePanning]="true" [scrollwheel]="true">
+
+            <agm-marker  [latitude]="lat" [longitude]="long">
+            </agm-marker>
+      
+          </agm-map>
+    </div>
+</div>

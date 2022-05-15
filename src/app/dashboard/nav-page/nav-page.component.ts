@@ -15,12 +15,7 @@ export class NavPageComponent implements OnInit {
   
   user: User = { id: '', name: '', surname: '', email: '' };
   isLogged: Boolean = false;
-  constructor(private auth: AuthService) { }
-
-  ngOnInit(): void {
-
-
-    const _auth = getAuth();
+  constructor(private auth: AuthService) { const _auth = getAuth();
     onAuthStateChanged(_auth, (a) => {
     if (a) {
       // User is signed in, see docs for a list of available properties
@@ -37,7 +32,12 @@ export class NavPageComponent implements OnInit {
       // User is signed out
       // ...
     }
-  });
+  }); }
+
+  ngOnInit(): void {
+
+
+   
   }
 
   logOut() {
