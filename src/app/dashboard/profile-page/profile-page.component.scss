@@ -95,7 +95,7 @@ display: flex;
   }
 
   & #list{
-  //  border: 1px solid black;
+    //border: 1px solid black;
   }
 
   & .icon {
@@ -163,7 +163,7 @@ display: flex;
   }
 
   .btn:hover {
-    -webkit-box-shadow: 3px 3px 25px 0px #000000;
+    box-shadow: 3px 3px 25px 0px #000000;
   }
 
   .btn:focus {
