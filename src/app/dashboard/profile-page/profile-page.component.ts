@@ -47,10 +47,8 @@ export class ProfilePageComponent implements OnInit {
     private userWishList: UserWishListService,
     private mapsAPILoader: MapsAPILoader,
   ) {
-    this.getCountiesList();
-    this.getUserWishList();
-    this.getUserMyList();
-
+    
+    this.getAllList();
   }
 
   ngOnInit(): void {
@@ -62,6 +60,12 @@ export class ProfilePageComponent implements OnInit {
    // console.log(this.user);
 
     this.porownanie();
+  }
+
+  getAllList(){
+    this.getCountiesList();
+    this.getUserWishList();
+    this.getUserMyList();
   }
 
   porownanie() {
@@ -162,6 +166,7 @@ export class ProfilePageComponent implements OnInit {
     this.krajElement = this.krajList[i];
     this.userWishList.addCountry(this.krajElement);
     // console.log(this.krajElement);
+    this.getAllList();
     this.porownanie();
     this.openWishList();
   }
@@ -183,6 +188,7 @@ export class ProfilePageComponent implements OnInit {
 
   removeFromWishList(i: number) {
     this.userWishList.deleteCountry(this.myWishList[i]);
+    this.getAllList();
     this.porownanie();
   }
 
@@ -201,21 +207,40 @@ export class ProfilePageComponent implements OnInit {
     })
   }
 
-  addToMyList(i: number) {
-    console.log(this.krajList[i]);
+  addToMyListFromKrajList(i: number) {
+    
     this.userMyListS.addCountry(this.krajList[i]);
 
-    this.getUserMyList();
-    this.getUserWishList();
+    this.getAllList();
     try {
       this.removeFromWishList(i)
     } catch (error) {
       console.log('brak w bazie');
     }
 
+    this.porownanie();
+    this.openMyList();
+  }
+
+  addToMyList(i: number) {
+    
+    this.userMyListS.addCountry(this.myWishList[i]);
+
+    this.getAllList();
+    try {
+      this.removeFromWishList(i)
+    } catch (error) {
+      console.log('brak w bazie');
+    }
 
     this.porownanie();
     this.openMyList();
+  }
+
+  removeFromList(i: number){
+    this.userMyListS.deleteCountry(this.myCountryList[i]);
+    this.getAllList();
+    this.porownanie();
   }
 
   editUser(){

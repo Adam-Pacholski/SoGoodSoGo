@@ -50,7 +50,7 @@ import { PostPageComponent } from './admin/post-page/post-page.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, 
-    AgmCoreModule.forRoot(environment.google)
+    AgmCoreModule.forRoot(environment.google),
     
   ],
   providers: [],
