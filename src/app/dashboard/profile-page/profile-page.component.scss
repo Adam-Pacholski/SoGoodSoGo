@@ -7,9 +7,12 @@ agm-map{
   cursor: pointer;
 }
 
+.noPointer{
+  cursor: auto;
+}
+
 .myBorder {
   border-right: 2px dashed black;
-  
 }
 
 .color{
