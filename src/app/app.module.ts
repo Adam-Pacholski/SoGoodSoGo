@@ -24,6 +24,7 @@ import { AdminPageComponent } from './admin/admin-page/admin-page.component';
 import { BazaKrajowPageComponent } from './admin/baza-krajow-page/baza-krajow-page.component';
 import { BazaFaqPageComponent } from './admin/baza-faq-page/baza-faq-page.component';
 import { PostPageComponent } from './admin/post-page/post-page.component';
+import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
 
 
@@ -43,6 +44,7 @@ import { PostPageComponent } from './admin/post-page/post-page.component';
     BazaKrajowPageComponent,
     BazaFaqPageComponent,
     PostPageComponent,
+    SearchFilterPipe,
   ],
   imports: [
     BrowserModule,

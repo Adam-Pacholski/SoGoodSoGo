@@ -58,11 +58,14 @@
       </div>
 
       <div *ngIf="countryList" id="list" class="col-7 pt-4 ms-4">
-        <h3 class="pb-3">Lista wszystkich krajów</h3>
+        <h3 class="pb-1">Lista wszystkich krajów</h3>
+        <div class="row pb-3">
+          <div><div>Wyszukaj: </div> <input type="text" [(ngModel)]="searchTerm" (input)="search(searchTerm)" class="input-form" name="search"></div>
+        </div>
         <div class="scroll ">
-          <div *ngFor="let k of krajList; let i = index" class="listBox">
-            <div class="heder d-flex pointer" (click)="mapLocationAll(i)">
-              <div [ngClass]="{'color': k.list===true || k.wish===true}">{{ i+1 }}.</div>
+          <div *ngFor="let k of searchKrajList | searchFilter: searchTerm; index as i" class="listBox">
+            <div  class="heder d-flex pointer" (click)="mapLocationAll(i)">
+              <div>{{ i+1 }}.</div>
               <div class="namee">{{ k.name }}</div>
               <div *ngIf="!k.wish==true && !k.list===true" (click)=" addToWishList(i)" class="me-3 pe-3 myBorder">Cel</div>
 
@@ -99,7 +102,7 @@
         </div>
       </div>
 
-      <div *ngIf="myList" id="list" class="col-7 scroll pt-4 ms-4">
+      <div *ngIf="myList" id="list" class="col-7 pt-4 ms-4">
         <h3 class="pb-3">Lista krajów odwiedzonych</h3>
 
         <div class="scroll ">

@@ -37,6 +37,8 @@ export class ProfilePageComponent implements OnInit {
 
   krajElement: Country = { docID: '', name: '', lat: 0, long: 0, capital: '' };
 
+  searchTerm: string = '';
+  searchKrajList: Country[] = [];
   krajList: Country[] = [];
   myCountryList: Country[] = [];
   myWishList: Country[] = [];
@@ -62,10 +64,17 @@ export class ProfilePageComponent implements OnInit {
     this.porownanie();
   }
 
+  search(value: string): void {
+    this.searchKrajList = this.krajList.filter((val) =>
+      val.name.toLowerCase().includes(value)
+    );
+  }
+
   getAllList(){
     this.getCountiesList();
     this.getUserWishList();
     this.getUserMyList();
+    
   }
 
   porownanie() {
@@ -144,9 +153,9 @@ export class ProfilePageComponent implements OnInit {
 
   // --- wszystkie kraje
   mapLocationAll(i: number) {
-    this.krajElement = this.krajList[i];
-    this.lat = Number(this.krajList[i].lat);
-    this.long = Number(this.krajList[i].long);
+    
+    this.lat = Number(this.searchKrajList[i].lat);
+    this.long = Number(this.searchKrajList   [i].long);
     this.zoom = 6;
 
 
@@ -156,15 +165,19 @@ export class ProfilePageComponent implements OnInit {
   getCountiesList() {
     this.cs.getCountries().subscribe(items => {
       this.krajList = items;
+      this.searchKrajList = items;
       this.lenghtAll = this.krajList.length;
     })
 
   }
 
+  clickTest(){
+    
+  }
+
   addToWishList(i: number) {
 
-    this.krajElement = this.krajList[i];
-    this.userWishList.addCountry(this.krajElement);
+    this.userWishList.addCountry(this.searchKrajList[i]);
     // console.log(this.krajElement);
     this.getAllList();
     this.porownanie();

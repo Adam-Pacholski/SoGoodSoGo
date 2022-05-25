@@ -3,6 +3,15 @@ agm-map{
  // width: 100px;
 }
 
+.input-form
+{   
+    background-color: #FFDB15;
+    width: 700px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-color:#000000;
+}
+
 .pointer{
   cursor: pointer;
 }
@@ -16,7 +25,7 @@ agm-map{
 }
 
 .color{
-  color: red;
+  color: green;
 }
 
 .row.border-dark.border-top{
