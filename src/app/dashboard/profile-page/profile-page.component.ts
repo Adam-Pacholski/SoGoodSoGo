@@ -1,5 +1,6 @@
 import { GoogleMapsAPIWrapper, MapsAPILoader } from '@agm/core';
 import { Component, NgZone, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
 import { Country } from 'src/app/interface/country';
 import { User } from 'src/app/interface/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -66,7 +67,7 @@ export class ProfilePageComponent implements OnInit {
 
   search(value: string): void {
     this.searchKrajList = this.krajList.filter((val) =>
-      val.name.toLowerCase().includes(value)
+      val.name.toLowerCase().includes(value.toLowerCase())
     );
   }
 

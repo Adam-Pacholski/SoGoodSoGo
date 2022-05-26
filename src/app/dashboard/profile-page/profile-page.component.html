@@ -60,7 +60,7 @@
       <div *ngIf="countryList" id="list" class="col-7 pt-4 ms-4">
         <h3 class="pb-1">Lista wszystkich krajów</h3>
         <div class="row pb-3">
-          <div><div>Wyszukaj: </div> <input type="text" [(ngModel)]="searchTerm" (input)="search(searchTerm)" class="input-form" name="search"></div>
+          <div><form >Wyszukaj: <input type="text" [(ngModel)]="searchTerm" (input)="search(searchTerm)" class="input-form" name="search"></form> </div>
         </div>
         <div class="scroll ">
           <div *ngFor="let k of searchKrajList | searchFilter: searchTerm; index as i" class="listBox">
@@ -69,10 +69,10 @@
               <div class="namee">{{ k.name }}</div>
               <div *ngIf="!k.wish==true && !k.list===true" (click)=" addToWishList(i)" class="me-3 pe-3 myBorder">Cel</div>
 
-              <div *ngIf="k.wish==true" class="me-3 pe-3 myBorder noPointer">Na liscie celow</div>
+              <div *ngIf="k.wish==true" class="me-3 pe-3 myBorder noPointer">Na liście celów</div>
 
-              <div *ngIf="!k.list===true" (click)=" addToMyListFromKrajList(i)" class="me-3 pe-3 myBorder">Osiagniete</div>
-              <div *ngIf="k.list===true" class="me-3 pe-3 myBorder noPointer">Cel osiagniety</div>
+              <div *ngIf="!k.list===true" (click)=" addToMyListFromKrajList(i)" class="me-3 pe-3 myBorder">Osiagnięte</div>
+              <div *ngIf="k.list===true" class="me-3 pe-3 myBorder noPointer">Cel osiagnięty</div>
 
               <div><i class="icon fa-solid fa-location-dot"></i></div>
             </div>
@@ -82,15 +82,15 @@
       </div>
 
       <div *ngIf="wishlist" id="list" class="col-7 pt-4 ms-4">
-        <h3 class="pb-3">Lista zyczen</h3>
+        <h3 class="pb-3">Lista życzen</h3>
 
         <div class="scroll ">
           <div *ngFor="let k of myWishList; let i = index" class="listBox" (click)="mapLocationWish(i)">
             <div class="heder d-flex pointer">
               <div [ngClass]="{'color': k.list===true}">{{ i+1 }}.</div>
               <div class="namee">{{ k.name }}</div>
-              <div (click)=" addToMyList(i)" class="me-3 pe-3 myBorder">Osiagniete</div>
-              <div (click)="removeFromWishList(i)" class="me-3 pe-3 myBorder">Usun z listy</div>
+              <div (click)=" addToMyList(i)" class="me-3 pe-3 myBorder">Osiagnięte</div>
+              <div (click)="removeFromWishList(i)" class="me-3 pe-3 myBorder">Usuń z listy</div>
 
               <div><i class="icon fa-solid fa-location-dot"></i></div>
 
@@ -110,7 +110,7 @@
             <div class="heder d-flex pointer">
               <div [ngClass]="{'color': k.list===true}">{{ i+1 }}.</div>
               <div class="namee">{{ k.name }}, stolica: {{k.capital}}</div>
-              <div (click)="removeFromList(i)" class="me-3 pe-3 myBorder">Usun z listy</div>
+              <div (click)="removeFromList(i)" class="me-3 pe-3 myBorder">Usuń z listy</div>
 
               <div><i class="icon fa-solid fa-location-dot"></i></div>
 
