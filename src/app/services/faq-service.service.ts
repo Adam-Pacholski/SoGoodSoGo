@@ -33,7 +33,7 @@ export class FaqServiceService {
 
   addFaq(data: FaqList) {
    const newId = this.afs.createId();
-   this.faqCollection.doc(newId).set({docID: newId ,id: data.id, question: data.question, answer: data.answer}).then(data => {
+   this.faqCollection.doc(newId).set({docID: newId ,id: data.id, question: data.question, answer: data.answer}).then(() => {
      this.messageService.succes("Dodano nowy FAQ");
    }).catch((err: FirebaseError) => {
     this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);

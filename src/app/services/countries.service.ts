@@ -50,7 +50,7 @@ export class CountriesService {
   editCountries(data: Country) {
    // console.log(data.docID);
     this.countriesColection.doc(data.docID).
-      update({ docID: data.docID, name: data.name, lat: data.lat, long: data.long, capital: data.capital }).then(data => {
+      update({ docID: data.docID, name: data.name, lat: data.lat, long: data.long, capital: data.capital }).then(() => {
         this.messageService.succes("Pomyślnie edytowano kraj");
       }).catch((err: FirebaseError) => {
        this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);

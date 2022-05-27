@@ -31,11 +31,11 @@ export class PostService {
   createPost(data: Post) {
     const newId = this.afs.createId();
     this.postCollection.doc(newId).set({ docID: newId, email: data.email, name: data.name, surname: data.surname, message: data.message, readStat: data.readStat })
-    .then(data => {
+    .then(() => {
       this.messageService.succes("Dziękujemy!! Pomyślnie wysłano wiadomość");
     }).catch((err: FirebaseError) => {
      this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);
-    });;
+    });
   }
 
   changeReadStat(data: Post){
