@@ -6,6 +6,8 @@ import { map, Observable } from 'rxjs';
 import { User } from '../interface/user';
 
 import { getAuth, sendPasswordResetEmail } from "firebase/auth";
+import { MessageService } from './message.service';
+import { FirebaseError } from 'firebase/app';
 
 @Injectable({
   providedIn: 'root'
@@ -23,7 +25,8 @@ export class AuthService {
     private auth: AngularFireAuth,
     private router: Router,
     private db: AngularFirestore,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private messageService: MessageService
   ) { }
 
   test() {
@@ -44,6 +47,13 @@ export class AuthService {
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate(['/profile'], { relativeTo: this.route });
         this.db.collection('users');
+        this.messageService.succes("Zalogowano pomyślnie");
+      }).catch((err: FirebaseError) => {
+        if (err.code === "auth/wrong-password") {
+          this.messageService.error("Nie poprawne hasło");
+        } else if (err.code === "auth/user-not-found") {
+          this.messageService.error("Nie znaleziono użytkownika. Sprawdź czy poprawnie wpisałeś e-mail");
+        }
       });
 
   }
@@ -61,7 +71,21 @@ export class AuthService {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate(['/profile'], { relativeTo: this.route });
-      })
+      }).then(() => {
+        this.messageService.succes("Rejestracja przebiegła pomyślnie");
+      }).catch((err: FirebaseError) => {
+
+        if (err.code === 'auth/email-already-in-use') {
+          this.messageService.error("Istnieje już użytkownik o takim emailu: " + user.email);
+        }
+        else if(err.code === 'auth/invalid-email') {
+          this.messageService.error('Sprawdź czy poprawnie został wpisany e-mail');
+        }
+        else {
+          this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);
+        }
+
+      });
   }
 
   creatUser(uid: string, user: User) {
@@ -69,18 +93,27 @@ export class AuthService {
   }
 
   editNameSurnameUser(data: User) {
-    this.db.collection('users').doc<User>(data.id).update({ name: data.name, surname: data.surname });
+    this.db.collection('users').doc<User>(data.id).update({ name: data.name, surname: data.surname }).then(() => {
+      this.messageService.succes("Pomyślnie edytowano dane użytkownika");
+    }).catch((err: FirebaseError) => {
+      this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);
+    });
   }
 
   // wylogowanie sie
 
   logout() {
-    this.auth.signOut();
-    localStorage.clear;
-    this.isLogged = false;
-    this.user = { id: '', name: '', surname: '', email: '' };
-    localStorage.clear();
-    this.router.navigate([''])
+    this.auth.signOut().then(() => {
+      this.messageService.succes("Pomyślnie wylogowano");
+      localStorage.clear;
+      this.isLogged = false;
+      this.user = { id: '', name: '', surname: '', email: '' };
+      localStorage.clear();
+      this.router.navigate([''])
+    }).catch((err: FirebaseError) => {
+      this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);
+    });;
+
   }
 
   getUser(uid: string) {

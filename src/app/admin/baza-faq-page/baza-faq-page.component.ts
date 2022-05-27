@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FaqList } from 'src/app/interface/faqListInterface';
 import { FaqServiceService } from 'src/app/services/faq-service.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-baza-faq-page',
@@ -14,12 +15,13 @@ export class BazaFaqPageComponent implements OnInit {
   dlugosc: number = 0;
   show: number = -1;
 
-  constructor(private faqS: FaqServiceService) {
+  constructor(private faqS: FaqServiceService, private messageService: MessageService) {
     this.getList();
    }
 
   ngOnInit(): void {
   }
+
   getList(){
     this.faqS.getFaq().subscribe(items => {
       this.faqList = items;
@@ -30,6 +32,7 @@ export class BazaFaqPageComponent implements OnInit {
   addQuestion(){
     this.faqElement.id = this.dlugosc+1;
     this.faqS.addFaq(this.faqElement);
+    
   } 
 
   editQuestion(){
