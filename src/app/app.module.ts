@@ -26,6 +26,10 @@ import { BazaFaqPageComponent } from './admin/baza-faq-page/baza-faq-page.compon
 import { PostPageComponent } from './admin/post-page/post-page.component';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 
+import { ToastrModule } from 'ngx-toastr';
+import { MessageService } from './services/message.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+
 
 
 @NgModule({
@@ -48,14 +52,20 @@ import { SearchFilterPipe } from './pipe/search-filter.pipe';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, 
     AgmCoreModule.forRoot(environment.google),
+    ToastrModule.forRoot({
+      positionClass: 'toast-top-center',
+      progressBar: true, 
+      progressAnimation: 'increasing'
+    })
     
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

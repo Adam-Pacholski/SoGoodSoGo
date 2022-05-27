@@ -1,11 +1,13 @@
 import { LocalizedString } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import { FirebaseError } from 'firebase/app';
 
 import { map, Observable } from 'rxjs';
 import { Country } from '../interface/country';
 import { User } from '../interface/user';
 import { AuthService } from './auth.service';
+import { MessageService } from './message.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class UserWishListService {
   item: string | null;
   
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore, private messageService: MessageService) {
     this.item = localStorage.getItem('uid');
     this.getList();
     }
@@ -48,7 +50,11 @@ export class UserWishListService {
  addCountry(data: Country) {
    const newId = this.afs.createId();
    this.countriesColection.doc(newId).
-     set({ docID: newId, name: data.name, lat: data.lat, long: data.long, capital: data.capital });
+     set({ docID: newId, name: data.name, lat: data.lat, long: data.long, capital: data.capital }).then(() => {
+      this.messageService.succes("Pomyślnie zapisano kraj " + data.name + " do listy życzeń");
+    }).catch((err: FirebaseError) => {
+     this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);
+    });
  }
 
  editCountries(data: Country) {
@@ -61,6 +67,10 @@ export class UserWishListService {
   const ref = this.afs.collection('users').doc(String(this.item));
   this.countriesColection = ref.collection('wishList');
 
-  this.countriesColection.doc(data.docID).delete();
+  this.countriesColection.doc(data.docID).delete().then(() => {
+    this.messageService.succes("Pomyślnie usunięto kraj: " + data.name + " z Twojej listy życzeń" );
+  }).catch((err: FirebaseError) => {
+   this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);
+  });
  }
 }
