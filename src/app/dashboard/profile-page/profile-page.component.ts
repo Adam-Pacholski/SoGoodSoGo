@@ -223,7 +223,7 @@ export class ProfilePageComponent implements OnInit {
 
   addToMyListFromKrajList(i: number) {
     
-    this.userMyListS.addCountry(this.krajList[i]);
+    this.userMyListS.addCountry(this.searchKrajList[i]);
 
     this.getAllList();
     try {

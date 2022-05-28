@@ -40,7 +40,7 @@ export class CountriesService {
   addCountry(data: Country) {
     const newId = this.afs.createId();
     this.countriesColection.doc(newId).
-      set({ docID: newId, name: data.name, lat: data.lat, long: data.long, capital: data.capital }).then(data => {
+      set({ docID: newId, name: data.name, lat: data.lat, long: data.long, capital: data.capital }).then(() => {
         this.messageService.succes("Pomyślnie dodano nowy Kraj");
       }).catch((err: FirebaseError) => {
        this.messageService.error("Coś poszło nie tak, kod błędu: " + err.code);
