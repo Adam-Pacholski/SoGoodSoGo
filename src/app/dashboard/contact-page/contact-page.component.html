@@ -1,73 +1,90 @@
-<div id="main-container">
+<div class="container-fluid">
+  <div class="row">
 
-  <div id="left">
-
-    <h1>FORMULARZ KONTAKTOWY</h1>
-
-    <h2>Coś nie działa?</h2>
-    <h2>Masz pomysł jak ulepszyć naszą stronę?</h2>
-    <h2>Może chcesz dołaczyć do naszego zespołu i pomóc nam ulepszać tą aplikację każdego dnia?</h2>
-    <h2>Napisz do nas! Odpowiemy na każde Twoje pytanie!</h2>
-
-    <img [src]="'assets/images/227.png'">
-    <footer> Copyright 2022; Made and design by GrupaSuperDeveloperów</footer>
-  </div>
-
-  <div id="right">
-
-    <div id="wrap">
-
-      <form (ngSubmit)="sendPost()">
-
-        <div class="field-of-form">
-          <label class="header-of-input" >E-mail</label>
-          <input type="text" [(ngModel)]="post.email" class="input-form" name="email">
-        </div>
-
-        <div class="field-of-form">
-          <label class="header-of-input" >Imie</label>
-          <input type="text" [(ngModel)]="post.name" class="input-form" name="name">
-        </div>
-
-        <div class="field-of-form">
-          <label class="header-of-input" >Nazwisko</label>
-          <input type="text" [(ngModel)]="post.surname" class="input-form" name="surname">
-        </div>
-
-        <div class="field-of-form">
-          <label class="header-of-input" >Wiadomość</label>
-          <textarea id="inputMessage" [(ngModel)]="post.message" type="text" class="input-form" name="message"></Textarea>
-        </div>
-
-       
-          <button type="submit" class="btn"> ZATWIERDŹ </button>
-          <button type="reset" class="btn" (click)="clear()"> WYCZYŚĆ </button>
-       
-
-      </form>
-
+    <!-- Kolumna lewa -->
+    <div class="col-12 col-lg-5 left left--border-right">
+      <h3 class="left__h3">FORMULARZ KONTAKTOWY</h3>
+      <h4 class="left__h4">Coś nie działa?</h4>
+      <h5 class="left__h4">Masz pomysł jak ulepszyć naszą stronę?</h5>
+      <h5 class="left__h4">Może chcesz dołaczyć do naszego zespołu i pomóc nam ulepszać tą aplikację każdego dnia?</h5>
+      <h5 class="left__h4">Napisz do nas! Odpowiemy na każde Twoje pytanie!</h5>
+      <img [src]="'assets/images/p27.png'">
     </div>
 
-    <div id="icon-wrap">
+    <!-- Kolumna prawa -->
+    <div class="col-12 col-lg-7 right">
+      <div class="right__wrap">
+        <form (ngSubmit)="sendPost()">
 
-      <a href="https://www.facebook.com/" target="blank">
-        <div class="icon">
-          <i class="fa-brands fa-facebook-square"></i>
-        </div>
-      </a>
+          <div class="right__box">
+            <label class="right__label">E-mail</label>
+            <div class="right__input">
+              <input type="text" [(ngModel)]="post.email" name="email">
+            </div>
 
-      <a href="https://www.instagram.com/" target="blank">
-        <div class="icon">
-          <i class="fa-brands fa-instagram-square"></i>
-        </div>
-      </a>
+          </div>
 
-      <a href="https://twitter.com/" target="blank">
-        <div class="icon">
-          <i class="fa-brands fa-twitter-square"></i>
+          <div class="right__box">
+            <label class="right__label">Imie</label>
+            <div class="right__input">
+              <input type="text" [(ngModel)]="post.name" name="name">
+            </div>
+
+          </div>
+
+          <div class="right__box">
+            <label class="right__label">Nazwisko</label>
+            <div class="right__input">
+              <input type="text" [(ngModel)]="post.surname" class="input-form" name="surname">
+            </div>
+          </div>
+
+          <div class="right__box">
+            <label class="right__label">Wiadomość</label>
+            <div class="right__input">
+              <textarea [(ngModel)]="post.message" type="text" class="input-form" name="message"></Textarea>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-6 d-flex justify-content-center">
+              <button type="submit" class="right__btn"> ZATWIERDŹ </button></div>
+            <div class="col-12 col-md-6 col-lg-6 d-flex justify-content-center">
+              <button type="reset" class="right__btn" (click)="clear()"> WYCZYŚĆ </button></div>
+          </div>
+
+        </form>
+      </div>
+
+      
+      <div class="right__icon-wrap">
+        <div class="row">
+          <div class="col-4">
+            <a href="https://www.facebook.com/" target="blank">
+              <div class="right__icon">
+                <i class="fa-brands fa-facebook-square"></i>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-4">
+            <a href="https://www.instagram.com/" target="blank">
+              <div class="right__icon">
+                <i class="fa-brands fa-instagram-square"></i>
+              </div>
+            </a>
+          </div>
+          <div class="col-4">
+            <a href="https://twitter.com/" target="blank">
+              <div class="right__icon">
+                <i class="fa-brands fa-twitter-square"></i>
+              </div>
+            </a>
+          </div>
         </div>
-      </a>
+
+      </div>
     </div>
-  </div>
 
+  </div>
 </div>
