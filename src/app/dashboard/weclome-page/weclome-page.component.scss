@@ -40,7 +40,7 @@ img {
 
   &__h1 {
     &--font-size{
-      font-size: 3rem;
+      font-size: 2.75rem;
       @media only screen and (max-width: 600px){
         font-size: 2rem;
       }
@@ -58,8 +58,14 @@ img {
       }
       @media only screen and (min-width: 601px) and (max-width:1230px){
         font-size: 2rem;
-      }
+      }      
     }
+  }
+  
+  &_h4
+  {
+    font-style: italic;
+    font-size: 2rem;
   }
 
   &--yellow {
