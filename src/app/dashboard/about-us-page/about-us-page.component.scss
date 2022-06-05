@@ -1,52 +1,68 @@
-agm-map {
-  height: 400px;
-  width: 660px;
+#main-container{
+  width:100%;
+  display: flex;
 }
 
-.container {
-  margin-top: 200px;
-
-  & #scroll {
-    overflow-y: scroll;
-    height: 400px;
-  }
-  & h1 {
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 50px;
-      margin-bottom: 100px;
-      // background-color: black;
-      text-align: center;
-      color: black;
-      font-size: 60px;
-      font-weight: bold;
-    
-      //margin: 0;
-      padding: 0;
-      width: 600px;
-      letter-spacing: 24px;
-    }
-
- & .listBox {
-      background-color: #F5F5EF;
-      padding: 10px 20px 10px 20px ;
-      border-radius: 10px;
-      font-size: 18px;
-      margin-bottom: 20px;
-      cursor: pointer;
-
-      -webkit-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
-      -moz-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
-      box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
-      & .heder {
-         font-weight: bold; 
-      }
+.left{
+  background-color: #FFDB15;
+  text-align: center;
+  width:50%;
+  height: 925px;
+  border-right: 2px solid black;
   
-      & .collapseBox {
-         border-top: 1px black solid; 
-         padding-top: 5px;
+  &__wrap-list{
+    margin-top: 80px;
+    margin-left: 150px;
 
+    &__item-list{
+      display: flex;
+      text-align: left;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      
+      &__h2{
+      font-size: 2rem;
+      padding-left: 50px;
+      padding-top: 25px;
       }
+    }  
   }
+}
 
+.right{
+  background-color: #F5F5EF;
+  text-align: center;
+  width:50%;
+  height: 925px;
+
+  &__wrap-list{
+    margin-top: 80px;
+    margin-right:150px;
+
+    &__item-list{
+      display: flex;
+      text-align: right;
+      padding-top: 20px;
+      padding-bottom: 20px;
+     
+      &__h2{
+        font-size: 1.75rem;
+        padding-right: 50px;
+        padding-top: 25px;
+      }
+    } 
+  }
+}
+
+h1{
+  font-size: 3.5rem;
+  font-weight: bold;
+  padding-top: 60px;
+}
+
+img{
+  max-width: 100px;
+  max-height: 100px;
+  display: block;
+  padding: 10px;
 }
