@@ -1,4 +1,46 @@
-<div class="myContainer">
+<div class="container-fluid height">
+  <div class="row height">
+
+    <!-- Lewa strona (biała) -->
+    <div class="col-12 col-lg-7 white">
+      <div class="white__wrap white__wrap--">
+        <form (ngSubmit)="onSubmit()">
+          <h2>
+            Logowanie
+          </h2>
+          <div class="field-of-form">
+            <label class="header-of-input">E-mail</label>
+            <input type="text" class="input-form" [(ngModel)]="email" name="email">
+          </div>
+
+          <div class="field-of-form">
+            <label class="header-of-input">Hasło</label>
+            <input [type]="isChecked?'text':'password'" [(ngModel)]="password" class="input-form" name="password">
+          </div>
+
+          <div class="field-of-form mt-2">    
+            <label class="header-of-input-2 "> <input type="checkbox" [(ngModel)]="isChecked" class="input-checbox" name="name">Pokaż hasło</label>
+          </div>
+
+          <button type="submit" class="btn"> ZALOGUJ </button>
+        </form>
+      </div>
+    </div>
+    <!-- Prawa strona (żółta) -->
+    <div class="col-12 col-lg-5 yellow">
+      <div class="img--center">
+        <img [src]="'assets/images/p30.png'" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+ <!-- Stare -->
+<!-- <div class="myContainer">
   <div class="row">
     <div class="white">
 
@@ -31,4 +73,4 @@
       <div class="imgDiv"><img [src]="'assets/images/p30.png'" alt=""></div>
     </div>
   </div>
-</div>
+</div> -->
