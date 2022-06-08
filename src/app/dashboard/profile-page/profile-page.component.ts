@@ -18,7 +18,7 @@ import { UserWishListService } from 'src/app/services/user-wish-list.service';
 export class ProfilePageComponent implements OnInit {
 
   user: User = { id: '', name: '', surname: '', email: '', stat: false };
-  edit: boolean = false;
+  edit: boolean = true;
 
   countryList: boolean = false;
   wishlist: boolean = false;
