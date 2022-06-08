@@ -3,14 +3,24 @@ agm-map{
  // width: 100px;
 }
 
+.height{
+  height: 100%;
+}
+
+.padding {
+  padding: 0;
+  // margin-top: 50PX;
+}
+
 h3{
   text-align: center;
 }
 
+
 .input-form
 {   
     background-color: #FFDB15;
-    width: 700px;
+    //width: 700px;
     padding-left: 10px;
     padding-right: 10px;
     border-color:#000000;
@@ -24,12 +34,63 @@ h3{
   cursor: auto;
 }
 
-.myBorder {
-  border-right: 2px dashed black;
+.header{
+  text-align: center;
+  &__h1{
+    &--padding-top{
+      padding-top: 20px;
+    }
+  }
+
+  &__userName{
+    display: flex;
+    padding: 0;
+    justify-content: center;
+
+    i{
+      font-size: 30px;
+      padding-top: 12px;
+    }
+  }
+
+  &__editName{
+    width: 90%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    // display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    // box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
+
+    &__input-property {
+      background-color: #FFDB15;
+      width: 200px;
+      height: 36px;
+      font-size: 16px;
+      padding-left: 10px;
+     // padding-right: 10px;
+      border: none;
+      //margin-left: 25px;
+  
+  
+    }
+  }
+}
+
+.myborder {
+  border-right: 1px solid black;
 }
 
 .color{
   color: green;
+
+  &__bc--white{
+   background-color: #F5F5EF;
+  }
+  &__bc--yellow{
+    background-color: #FFDB15;
+  }
 }
 
 .row.border-dark.border-top{
