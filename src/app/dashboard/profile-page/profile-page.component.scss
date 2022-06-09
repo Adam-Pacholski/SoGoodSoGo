@@ -168,7 +168,31 @@ h3 {
 
 .listy{
   margin-top: 20px;
+  border: #000000 2px solid;
+  
   &__menu{
+    border-right: #000000 2px solid;
+    padding-top: 20px;
+  }
+
+  &__btn{
+    display: inline-block;
+    width: max-content;
+    height: 36px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #FFDB15;
+    color: #000000;
+    border: 1px solid black;
+    box-shadow: 1px 1px 10px 0px #000000;
+    margin-bottom: 20px;
+    &:hover {
+      box-shadow: 3px 3px 25px 0px #000000;
+    }
+  
+    &:focus {
+      outline: none;
+    }
 
   }
 }
@@ -315,24 +339,9 @@ h3 {
     bottom: 4px;
   }
 
-  .btn {
-    display: inline-block;
-    width: max-content;
-    height: 36px;
-    font-size: 20px;
-    font-weight: bold;
-    //   padding-bottom: 10px;
-    // margin-top: 50px;
-    //  margin-bottom: 25px; 
-  }
+ 
 
-  .btn:hover {
-    box-shadow: 3px 3px 25px 0px #000000;
-  }
-
-  .btn:focus {
-    outline: none;
-  }
+ 
 
   .goals {
     width: 70%;

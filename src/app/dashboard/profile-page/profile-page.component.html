@@ -41,11 +41,27 @@
               </button>
             </div>
           </div>
+          <!-- <button (click)="changePassword()">zmien haslo</button> -->
         </div>
 
+        <!-- Listy -->
+
         <div class="row listy">
-          <div class="col-12 col-lg-2 listy__menu">test</div>
-          <div class="col-12 col-lg-8">test</div>
+          <!-- menu -->
+          <div class="col-12 col-lg-3 listy__menu">
+            <button type="submit" (click)="openCountryList()" class="btn listy__btn">
+              <h5>Wszystkie kraje</h5>
+            </button>
+            <button type="submit" (click)=" openWishList()" class="btn listy__btn">
+              <h5>Lista życzeń</h5>
+            </button>
+            <button type="submit" (click)="openMyList()" class="btn listy__btn">
+              <h5>Moja lista</h5>
+            </button>
+          </div>
+
+          <!-- listy krajow  -->
+          <div class="col-12 col-lg-9">test</div>
         </div>
  
       </div>
@@ -72,25 +88,6 @@
 
     <!-- <button (click)="changePassword()">zmien haslo</button> -->
 
-    <div id="userName">
-      <h2>Witaj, {{user.name}} {{user.surname }}</h2>
-      <i *ngIf="!edit" (click)="openEdit()" class="ms-2 fa-solid fa-pen-nib"></i>
-    </div>
-
-    <div *ngIf="edit" id="editName">
-      <div class="row">
-        <div class="col"><input type="text" placeholder="Imię" [(ngModel)]="user.name" class="input-property"
-            name="name"></div>
-        <div class="col"><input type="text" placeholder="Nazwisko" [(ngModel)]="user.surname" class="input-property"
-            name="surname"></div>
-
-        <div class="col"> <button type="submit" (click)="editUser()" class="btn"><i
-              class="icon fa-solid fa-floppy-disk"></i>
-            <span>Zmień</span> </button></div>
-        <div class="col"><button type="submit" (click)="openEdit()" class="btn"><i class="icon fa-solid fa-xmark"></i>
-            <span>Anuluj</span></button></div>
-      </div>
-    </div>
 
     <div class="row border-dark border-top mt-4">
       <div class="col-3 pt-5  border-dark border-end">
@@ -98,7 +95,6 @@
 
         <div class="row ms-4">
           <button type="submit" (click)="openCountryList()" class="btn">
-
             <h5>Wszystkie kraje</h5>
           </button>
 
@@ -114,7 +110,6 @@
           <div class="row mt-3">
             <div class="ms-4 col-4">
               <button type="submit" (click)="openMyList()" class="btn">
-
                 <h5>Moja lista</h5>
               </button>
             </div>

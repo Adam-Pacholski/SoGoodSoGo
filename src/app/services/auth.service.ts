@@ -9,6 +9,7 @@ import { getAuth, sendPasswordResetEmail } from "firebase/auth";
 import { MessageService } from './message.service';
 import { FirebaseError } from 'firebase/app';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -145,6 +146,7 @@ export class AuthService {
       .catch((error: { code: any; message: any; }) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        this.messageService.error(errorMessage);
         // ..
       });
   }
