@@ -5,7 +5,8 @@
         <h1 class=" header__h1--padding-top">PROFIL UŻYTKOWNIKA</h1>
         <div class="header__userName">
           <h2>Witaj, {{user.name}} {{user.surname }}</h2>
-          <i *ngIf="!edit" (click)="openEdit()" class="ms-2 fa-solid fa-pen-nib"></i>
+          <i *ngIf="!edit" (click)="openEdit()" class="ms-2 fa-solid fa-gear"></i>
+          
         </div>
 
         <!-- Edycja -->
