@@ -10,35 +10,56 @@
 
         <!-- Edycja -->
         <div *ngIf="edit" class="header__editName ">
-          <div class="row">
-            <div class="col-3 padding ">
-              <input type="text" placeholder="Imię" [(ngModel)]="user.name" class="" name="name"></div>
-            <div class="col-3 padding"><input type="text" placeholder="Nazwisko" [(ngModel)]="user.surname" class="color__bc--yellow"
-                name="surname"></div>
-    
-            <div class="col padding"> <button type="submit" (click)="editUser()" class="btn color__bc--yellow"><i
-                  class="icon fa-solid fa-floppy-disk"></i>
-                <span>Zmień</span> </button></div>
-            <div class="col padding"><button type="submit" (click)="openEdit()" class="btn color__bc--yellow"><i class="icon fa-solid fa-xmark"></i>
-                <span>Anuluj</span></button></div>
+          <div class="row header__row">
+            <div class="header__editName__box">
+              <input 
+              type="text" 
+              placeholder="Imię" 
+              [(ngModel)]="user.name"
+               class="header__editName__input" 
+               name="name">
+            </div>
+
+            <div class=" header__editName__box">
+              <input type="text" 
+              placeholder="Nazwisko" 
+              [(ngModel)]="user.surname" 
+              class="header__editName__input "
+              name="surname">
+              </div>
+
+            <div class=" header__editName__box header__editName__box--width">
+              <button type="submit" (click)="editUser()" class="btn">
+                <i class="icon fa-solid fa-floppy-disk"></i>
+                <span>Zmień</span>
+              </button>
+            </div>
+            <div class="header__editName__box header__editName__box--width">
+              <button type="submit" (click)="openEdit()" class="btn "><i
+                  class="icon fa-solid fa-xmark"></i>
+                <span>Anuluj</span>
+              </button>
+            </div>
           </div>
         </div>
 
-
-
-        <div class="col-12 color__color--white">
-
+        <div class="row listy">
+          <div class="col-12 col-lg-2 listy__menu">test</div>
+          <div class="col-12 col-lg-8">test</div>
         </div>
-        <div class="col-12">test</div>
-      </div>  
+ 
+      </div>
     </div>
-    <div class="col-12 col-lg-5 padding"> 
-      <agm-map [latitude]='lat' [longitude]='long' [zoom]="zoom" [usePanning]="true" [scrollwheel]="true">
-      <agm-marker [latitude]="lat" [longitude]="long">
-      </agm-marker>
 
-    </agm-map></div>
-    
+    <!-- mapy -->
+    <div class="col-12 col-lg-5 padding">
+      <agm-map [latitude]='lat' [longitude]='long' [zoom]="zoom" [usePanning]="true" [scrollwheel]="true">
+        <agm-marker [latitude]="lat" [longitude]="long">
+        </agm-marker>
+
+      </agm-map>
+    </div>
+
   </div>
 </div>
 
@@ -50,7 +71,7 @@
   <div id="left">
 
     <!-- <button (click)="changePassword()">zmien haslo</button> -->
-    
+
     <div id="userName">
       <h2>Witaj, {{user.name}} {{user.surname }}</h2>
       <i *ngIf="!edit" (click)="openEdit()" class="ms-2 fa-solid fa-pen-nib"></i>
@@ -175,6 +196,6 @@
 
 
   <div id="right">
-   
+
   </div>
 </div>
