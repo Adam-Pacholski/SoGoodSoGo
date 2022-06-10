@@ -20,9 +20,9 @@ export class ProfilePageComponent implements OnInit {
   user: User = { id: '', name: '', surname: '', email: '', stat: false };
   edit: boolean = false;
 
-  countryList: boolean = false;
+  countryList: boolean = true;
   wishlist: boolean = false;
-  myList: boolean = true;
+  myList: boolean = false;
   
   lenghtAll: number = 0;
   lenghtWishList: number = 0;

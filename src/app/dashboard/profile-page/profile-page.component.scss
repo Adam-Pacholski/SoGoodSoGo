@@ -16,6 +16,11 @@ h3 {
   text-align: center;
 }
 
+.scroll {
+  overflow-y: scroll;
+  height: 500px;
+}
+
 .pointer {
   cursor: pointer;
 }
@@ -167,12 +172,33 @@ h3 {
 }
 
 .listy{
+  padding-top: 20px;
   margin-top: 20px;
-  border: #000000 2px solid;
+   border-top: #000000 2px solid;
   
   &__menu{
     border-right: #000000 2px solid;
     padding-top: 20px;
+  }
+
+  &__search{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid black;
+    padding-bottom: 10px;
+    &__input{
+      background-color: #FFDB15;
+      width: 60%;
+      outline: none;
+      margin-left: 5px;
+      border-radius: 5px;
+      box-shadow: 1px 1px 10px 0px #000000;
+      &:hover{
+        box-shadow: 3px 3px 25px 0px #000000;
+      }
+    }
   }
 
   &__btn{
@@ -193,8 +219,56 @@ h3 {
     &:focus {
       outline: none;
     }
-
   }
+
+  & .listBox {
+    background-color: #F5F5EF;
+    width: 90%;
+    padding: 10px 20px 10px 20px;
+    border-radius: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+
+    &:hover {
+      background-color: #FFDB15;
+    }
+
+    -webkit-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
+
+    & .heder {
+      font-weight: bold;
+
+      align-items: center;
+
+      & div {
+        vertical-align: middle;
+      }
+
+      & div.namee {
+        margin-right: auto;
+      }
+
+      & i {
+        padding: 0;
+        vertical-align: middle;
+
+        &:hover {
+          color: #F5F5EF;
+        }
+      }
+    }
+
+    & .collapseBox {
+      border-top: 1px black solid;
+      padding-top: 5px;
+    }
+  }
+
 }
 
 .myborder {
@@ -269,19 +343,12 @@ h3 {
 
   & .input-property {
     background-color: #FFDB15;
-    // width: 200px;
     height: 36px;
     font-size: 16px;
-    // padding-left: 10px;
-    // padding-right: 10px;
     border: none;
-    //margin-left: 25px;
+   
   }
 
-  & .scroll {
-    overflow-y: scroll;
-    height: 500px;
-  }
 
   & .icon {
     position: relative;

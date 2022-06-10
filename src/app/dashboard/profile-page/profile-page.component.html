@@ -6,28 +6,20 @@
         <div class="header__userName">
           <h2>Witaj, {{user.name}} {{user.surname }}</h2>
           <i *ngIf="!edit" (click)="openEdit()" class="ms-2 fa-solid fa-gear"></i>
-          
+
         </div>
 
         <!-- Edycja -->
         <div *ngIf="edit" class="header__editName ">
           <div class="row header__row">
             <div class="header__editName__box">
-              <input 
-              type="text" 
-              placeholder="Imię" 
-              [(ngModel)]="user.name"
-               class="header__editName__input" 
-               name="name">
+              <input type="text" placeholder="Imię" [(ngModel)]="user.name" class="header__editName__input" name="name">
             </div>
 
             <div class=" header__editName__box">
-              <input type="text" 
-              placeholder="Nazwisko" 
-              [(ngModel)]="user.surname" 
-              class="header__editName__input "
-              name="surname">
-              </div>
+              <input type="text" placeholder="Nazwisko" [(ngModel)]="user.surname" class="header__editName__input "
+                name="surname">
+            </div>
 
             <div class=" header__editName__box header__editName__box--width">
               <button type="submit" (click)="editUser()" class="btn">
@@ -36,8 +28,7 @@
               </button>
             </div>
             <div class="header__editName__box header__editName__box--width">
-              <button type="submit" (click)="openEdit()" class="btn "><i
-                  class="icon fa-solid fa-xmark"></i>
+              <button type="submit" (click)="openEdit()" class="btn "><i class="icon fa-solid fa-xmark"></i>
                 <span>Anuluj</span>
               </button>
             </div>
@@ -62,9 +53,66 @@
           </div>
 
           <!-- listy krajow  -->
-          <div class="col-12 col-lg-9">test</div>
+          <div class=" col-12 col-lg-9">
+
+            <!-- Lista wszystkich krajow -->
+            <div *ngIf="countryList" class="">
+              <h3 class="">Lista wszystkich krajów</h3>
+
+
+                <form  class="listy__search">Wyszukaj: 
+                  <input type="text" [(ngModel)]="searchTerm" (input)="search(searchTerm)"
+                    class="listy__search__input" name="search">
+                  </form>
+              
+              <div class="scroll">
+                <div *ngFor="let k of searchKrajList | searchFilter: searchTerm; index as i" class="listBox">
+                  <div class="heder d-flex pointer" (click)="mapLocationAll(i)">
+                    <div>{{ i+1 }}.</div>
+                    <div class="namee">{{ k.name }}</div>
+                    <div *ngIf="!k.wish==true && !k.list===true" (click)=" addToWishList(i)" class="me-3 pe-3 myBorder">
+                      Cel
+                    </div>
+
+                    <div *ngIf="k.wish==true" class="me-3 pe-3 myBorder noPointer">Na liście celów</div>
+
+                    <div *ngIf="!k.list===true" (click)=" addToMyListFromKrajList(i)" class="me-3 pe-3 myBorder">
+                      Osiagnięte
+                    </div>
+                    <div *ngIf="k.list===true" class="me-3 pe-3 myBorder noPointer">Cel osiagnięty</div>
+
+                    <div><i class="icon fa-solid fa-location-dot"></i></div>
+                  </div>
+                  <!-- <div *ngIf="i===show" class="collapseBox">{{k.lat}},{{k.long}}</div> -->
+                </div>
+              </div>
+            </div>
+
+             <!-- Lista zyczen krajow -->
+             <div *ngIf="wishlist" id="list" class="col-8 pt-4 ms-4">
+              <h3 class="pb-3">Lista życzen</h3>
+      
+              <div class="scroll ">
+                <div *ngFor="let k of myWishList; let i = index" class="listBox" (click)="mapLocationWish(i)">
+                  <div class="heder d-flex pointer">
+                    <div [ngClass]="{'color': k.list===true}">{{ i+1 }}.</div>
+                    <div class="namee">{{ k.name }}</div>
+                    <div (click)=" addToMyList(i)" class="me-3 pe-3 myBorder">Osiagnięte</div>
+                    <div (click)="removeFromWishList(i)" class="me-3 pe-3 myBorder">Usuń z listy</div>
+      
+                    <div><i class="icon fa-solid fa-location-dot"></i></div>
+      
+      
+                  </div>
+                  <!-- <div *ngIf="i===show" class="collapseBox">{{k.lat}},{{k.long}}</div> -->
+                </div>
+      
+              </div>
+            </div>
+
+          </div>
         </div>
- 
+
       </div>
     </div>
 
@@ -81,7 +129,7 @@
 </div>
 
 
-
+<!-- ------------------- Stare -------------------- -->
 
 <div id="main-container">
 
