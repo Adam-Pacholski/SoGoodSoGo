@@ -17,7 +17,7 @@
               </form>
         </div>
         <div class="col-6"> <div  *ngFor="let list of faqList; let i = index" class="listBox">
-            <div class="heder" (click)="collapse(i)">{{ list.id }}. {{ list.question }}</div>
+            <div class="heder" (click)="collapse(i)">{{ i+1}}. {{ list.question }}</div>
             <div *ngIf="i===show" class="collapseBox">{{list.answer}}</div>
           </div></div>
     </div>
