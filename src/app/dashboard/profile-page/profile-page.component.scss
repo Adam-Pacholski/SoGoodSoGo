@@ -1,10 +1,33 @@
 agm-map {
   height: 100%;
-  // width: 100px;
+
+  width: auto;
+
+  @media screen and (max-width:992px) {
+    height: 50%;
+  }
 }
 
 .height {
   height: 100%;
+  @media screen and (max-width:992px) {
+    height: 130%;
+  }
+  &__row {
+
+    height: 100%;
+    @media screen and (max-width:992px) {
+      height: 80%;
+    }
+  }
+
+  &__map {
+
+    height: 100%;
+    @media screen and (max-width:992px) {
+      height: 50%;
+    }
+  }
 }
 
 .padding {
@@ -241,7 +264,7 @@ h3 {
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid black;
-    
+
     &__btn {
       width: 95%;
       border: 1px dashed black;
@@ -307,7 +330,7 @@ h3 {
 
     & .heder {
       font-weight: bold;
-      
+
       align-items: center;
 
       & div {
@@ -351,213 +374,4 @@ h3 {
 
 .row.border-dark.border-top {
   margin-right: 0;
-}
-
-#main-container {
-  display: flex;
-
-  & .listBox {
-    background-color: #F5F5EF;
-    width: 90%;
-    padding: 10px 20px 10px 20px;
-    border-radius: 10px;
-    font-size: 18px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 10px;
-
-    &:hover {
-      background-color: #FFDB15;
-    }
-
-    -webkit-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 3px 3px 11px 0px rgba(0, 0, 0, 0.75);
-
-    & .heder {
-      font-weight: bold;
-
-      align-items: center;
-
-      & div {
-        vertical-align: middle;
-      }
-
-      & div.namee {
-        margin-right: auto;
-      }
-
-      & i {
-        padding: 0;
-        vertical-align: middle;
-
-        &:hover {
-          color: #F5F5EF;
-        }
-      }
-    }
-
-    & .collapseBox {
-      border-top: 1px black solid;
-      padding-top: 5px;
-    }
-  }
-
-  & .input-property {
-    background-color: #FFDB15;
-    height: 36px;
-    font-size: 16px;
-    border: none;
-
-  }
-
-
-  & .icon {
-    position: relative;
-    bottom: 7px;
-    padding-bottom: 6px;
-    margin-right: 10px;
-  }
-
-  width: 100%;
-  min-height: 100%;
-  display: flex;
-
-  & #userName {
-    display: flex;
-    justify-content: center;
-
-    i {
-      font-size: 30px;
-    }
-  }
-
-  & #editName {
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-  }
-
-  h1 {
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    //font-size: 40px;
-    font-weight: bold;
-    letter-spacing: 4px;
-  }
-
-  h2 {
-    text-align: center;
-    //width: 400px;
-    margin: 0;
-  }
-
-  & i {
-    font-size: 20px;
-    vertical-align: middle;
-    margin-top: 10px;
-    cursor: pointer;
-
-  }
-
-  span {
-    position: relative;
-    bottom: 4px;
-  }
-
-  .goals {
-    width: 70%;
-    height: 450px;
-    padding: 25px;
-    margin-left: 10%;
-    border: none;
-  }
-
-  .wraper {
-    display: flex;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  #left {
-    width: 60%;
-    padding-top: 10px;
-    background-color: #F5F5EF;
-    border-right-style: solid;
-    border-color: #000000;
-    border-right-width: 1px;
-
-    .wraper {
-      .user-property {
-        padding: 25px;
-        text-align: left;
-
-        .header-of-property {
-          font-size: 15px;
-          margin-left: 75px;
-          font-weight: bold;
-        }
-
-
-      }
-
-      h1 {
-        margin-left: 200px;
-        padding: 50px;
-      }
-    }
-
-    // .btn {
-    //   background-color: #FFDB15;
-    //   color: #000000;
-    // }
-
-    .btn:hover {
-      background-color: #000000;
-      color: #FFDB15;
-    }
-
-    .goals {
-      background-color: #FFDB15;
-    }
-
-    footer {
-      letter-spacing: 2px;
-      padding: 15px;
-      font-size: 20px;
-      text-align: left;
-    }
-  }
-
-  #right {
-    width: 40%;
-    //  margin-top: 100px;
-    // text-align: center;
-
-    h1 {
-      margin-left: 150px;
-    }
-
-    .btn {
-      margin-top: 85px;
-      background-color: #F5F5EF;
-      color: #000000;
-    }
-
-    .btn:hover {
-      background-color: #000000;
-      color: #F5F5EF;
-    }
-
-    .goals {
-      margin: 15px;
-      background-color: #F5F5EF;
-    }
-  }
-
-
 }
