@@ -35,21 +35,23 @@ h3 {
   &__h1 {
     &--padding-top {
       padding-top: 20px;
-      @media screen and (max-width: 1134px){
+
+      @media screen and (max-width: 1134px) {
         font-size: 3rem;
       }
     }
   }
 
-  h2{
-    @media screen and (max-width: 1134px){
+  h2 {
+    @media screen and (max-width: 1134px) {
       font-size: 2rem;
     }
-    @media screen and (max-width: 410px){
+
+    @media screen and (max-width: 410px) {
       font-size: 1.5rem;
     }
   }
-  
+
 
   &__userName {
     display: flex;
@@ -59,20 +61,23 @@ h3 {
     i {
       font-size: 30px;
       padding-top: 12px;
-      @media screen and (max-width: 1134px){
+
+      @media screen and (max-width: 1134px) {
         font-size: 18px;
         padding-top: 12px;
       }
-      @media screen and (max-width: 410px){
+
+      @media screen and (max-width: 410px) {
         font-size: 18px;
         padding-top: 4px;
       }
     }
   }
-&__row{
-  display: flex;
-  justify-content:center;
-}
+
+  &__row {
+    display: flex;
+    justify-content: center;
+  }
 
   &__editName {
     width: 90%;
@@ -93,55 +98,68 @@ h3 {
       border-radius: 5px;
       box-shadow: 2px 2px 9px 0px rgba(0, 0, 0, 0.75);
       margin-right: 16px;
-      &:last-child{
+
+      &:last-child {
         margin-right: 0;
       }
-      @media screen and (max-width: 1386px){
+
+      @media screen and (max-width: 1386px) {
         width: 300px;
-        &:nth-child(1){
+
+        &:nth-child(1) {
           justify-content: left;
         }
-        &:nth-child(2){
+
+        &:nth-child(2) {
           margin-right: 0;
           justify-content: left;
         }
+
         margin-bottom: 10px;
       }
 
-      @media screen and (max-width: 1134px){
+      @media screen and (max-width: 1134px) {
         width: 450px;
-        &:nth-child(1){
+
+        &:nth-child(1) {
           justify-content: left;
           margin-right: 0;
         }
-        &:nth-child(2){
+
+        &:nth-child(2) {
           margin-right: 0;
           justify-content: left;
         }
+
         margin-bottom: 10px;
       }
 
-      @media screen and (max-width: 992px){
-        &:nth-child(1){
+      @media screen and (max-width: 992px) {
+        &:nth-child(1) {
           justify-content: left;
           margin-right: 0;
         }
-        &:nth-child(2){
+
+        &:nth-child(2) {
           margin-right: 0;
           justify-content: left;
         }
+
         margin-bottom: 10px;
       }
 
-      &--width{
+      &--width {
         width: 150px;
-        @media screen and (max-width: 1386px){
+
+        @media screen and (max-width: 1386px) {
           width: 300px;
-          
+
         }
-        @media screen and (max-width: 1134px){
+
+        @media screen and (max-width: 1134px) {
           width: 450px;
-          &:nth-child(3){
+
+          &:nth-child(3) {
             margin-right: 0;
           }
         }
@@ -150,7 +168,8 @@ h3 {
       &:hover {
         box-shadow: 4px 4px 12px 0px rgba(0, 0, 0, 0.75);
       }
-      i{
+
+      i {
         font-size: 20px;
         margin-right: 10px;
       }
@@ -163,7 +182,7 @@ h3 {
       margin-left: 5px;
       border: 0;
 
-      &--width{
+      &--width {
         width: 150px;
       }
     }
@@ -171,40 +190,76 @@ h3 {
   }
 }
 
-.listy{
+.listy {
   padding-top: 20px;
   margin-top: 20px;
-   border-top: #000000 2px solid;
-  
-  &__menu{
+  border-top: #000000 2px solid;
+
+  &__menu {
     border-right: #000000 2px solid;
     padding-top: 20px;
   }
 
-  &__search{
+  &__search {
     width: 90%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 20px;
     border-bottom: 1px solid black;
     padding-bottom: 10px;
-    &__input{
+
+    &__input {
       background-color: #FFDB15;
       width: 60%;
       outline: none;
       margin-left: 5px;
       border-radius: 5px;
       box-shadow: 1px 1px 10px 0px #000000;
-      &:hover{
+
+      &:hover {
         box-shadow: 3px 3px 25px 0px #000000;
       }
     }
   }
 
-  &__btn{
+  &__modal {
+    width: 200px;
+    height: auto;
+    background-color: #FFDB15;
+  }
+
+  // button{
+  //   background-color: #F5F5EF;
+  //       border: 1px dashed black;
+  //       border-radius:5px;
+  //       outline: none;
+  //       margin-top: 10px;
+  //       justify-content: space-between;
+  // }
+
+  &__btn2 {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid black;
+    
+    &__btn {
+      width: 95%;
+      border: 1px dashed black;
+      border-radius: 5px;
+      background-color: #F5F5EF;
+      margin-bottom: 10px;
+
+
+      &:hover {
+        box-shadow: 2px 2px 10px 0px #000000;
+      }
+    }
+  }
+
+  &__btn {
     display: inline-block;
-    width: max-content;
-    height: 36px;
+    width: 95%;
+    height: auto;
     font-size: 20px;
     font-weight: bold;
     background-color: #FFDB15;
@@ -212,10 +267,19 @@ h3 {
     border: 1px solid black;
     box-shadow: 1px 1px 10px 0px #000000;
     margin-bottom: 20px;
+
+    &__bg {
+      background-color: #000000;
+    }
+
+    h5 {
+      margin: 0;
+    }
+
     &:hover {
       box-shadow: 3px 3px 25px 0px #000000;
     }
-  
+
     &:focus {
       outline: none;
     }
@@ -226,6 +290,7 @@ h3 {
     width: 90%;
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
+
     font-size: 18px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -242,24 +307,21 @@ h3 {
 
     & .heder {
       font-weight: bold;
-
+      
       align-items: center;
 
       & div {
         vertical-align: middle;
       }
 
-      & div.namee {
+      & div.name {
+        border-left: 1px dashed black;
         margin-right: auto;
       }
 
       & i {
         padding: 0;
         vertical-align: middle;
-
-        &:hover {
-          color: #F5F5EF;
-        }
       }
     }
 
@@ -346,7 +408,7 @@ h3 {
     height: 36px;
     font-size: 16px;
     border: none;
-   
+
   }
 
 
@@ -406,10 +468,6 @@ h3 {
     bottom: 4px;
   }
 
- 
-
- 
-
   .goals {
     width: 70%;
     height: 450px;
@@ -453,11 +511,10 @@ h3 {
       }
     }
 
-    .btn {
-      background-color: #FFDB15;
-      color: #000000;
-
-    }
+    // .btn {
+    //   background-color: #FFDB15;
+    //   color: #000000;
+    // }
 
     .btn:hover {
       background-color: #000000;

@@ -20,9 +20,11 @@ export class ProfilePageComponent implements OnInit {
   user: User = { id: '', name: '', surname: '', email: '', stat: false };
   edit: boolean = false;
 
-  countryList: boolean = true;
+  countryList: boolean = false;
   wishlist: boolean = false;
-  myList: boolean = false;
+  myList: boolean = true;
+
+  
   
   lenghtAll: number = 0;
   lenghtWishList: number = 0;
@@ -32,6 +34,7 @@ export class ProfilePageComponent implements OnInit {
   long: number = 14.682228;
   show: number = -1;
   zoom: number = 15;
+  modal:number = -1;
   location: Object = {};
 
   docId: string = '';
@@ -52,6 +55,7 @@ export class ProfilePageComponent implements OnInit {
   ) {
     
     this.getAllList();
+    
   }
 
   ngOnInit(): void {
@@ -159,6 +163,7 @@ export class ProfilePageComponent implements OnInit {
     this.lat = Number(this.searchKrajList[i].lat);
     this.long = Number(this.searchKrajList   [i].long);
     this.zoom = 6;
+    this.modal = i;
 
 
     // console.log(this.krajElement);
@@ -198,7 +203,9 @@ export class ProfilePageComponent implements OnInit {
     this.userWishList.getCountries().subscribe(items => {
       this.myWishList = items;
       this.lenghtWishList = this.myWishList.length;
-    })
+      
+    });
+    this.porownanie();
   }
 
   removeFromWishList(i: number) {
@@ -219,7 +226,8 @@ export class ProfilePageComponent implements OnInit {
     this.userMyListS.getCountries().subscribe(items => {
       this.myCountryList = items;
       this.lenghtMyList = this.myCountryList.length;
-    })
+    });
+    this.porownanie();
   }
 
   addToMyListFromKrajList(i: number) {
