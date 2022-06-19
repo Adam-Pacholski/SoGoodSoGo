@@ -8,7 +8,8 @@
       <div>
         <div class="heder border-bottom d-flex">
           <div>{{ i+1 }}.</div>{{k.name}} | {{k.surname}} | {{ k.email }}
-          <i (click)="read(i)" class="ms-auto fa-solid fa-check"></i>
+          <button (click)="read(i)" class="btn btn-success ms-auto">Oznacz jako przeczytane</button>
+          <!-- <i (click)="read(i)" class="ms-auto fa-solid fa-check"></i> -->
         </div>
         <div>{{k.message}}</div>
       </div>
